@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.boolean :status
       t.string :avatar
       t.boolean :role
-      t.integer :total_icon
+      t.integer :total_coin
       t.integer :number_free
       t.integer :number_upload
 

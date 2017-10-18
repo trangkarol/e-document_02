@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20171017074558) do
   end
 
   create_table "category_documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "categories_id"
-    t.bigint "documents_id"
+    t.bigint "category_id"
+    t.bigint "document_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_category_documents_on_categories_id"
-    t.index ["documents_id"], name: "index_category_documents_on_documents_id"
+    t.index ["category_id"], name: "index_category_documents_on_category_id"
+    t.index ["document_id"], name: "index_category_documents_on_document_id"
   end
 
   create_table "coins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -35,13 +35,13 @@ ActiveRecord::Schema.define(version: 20171017074558) do
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "users_id"
-    t.bigint "documents_id"
+    t.bigint "user_id"
+    t.bigint "document_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["documents_id"], name: "index_comments_on_documents_id"
-    t.index ["users_id"], name: "index_comments_on_users_id"
+    t.index ["document_id"], name: "index_comments_on_document_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,19 +50,19 @@ ActiveRecord::Schema.define(version: 20171017074558) do
     t.string "url"
     t.integer "size"
     t.boolean "status"
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_documents_on_users_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "categories_id"
-    t.bigint "documents_id"
+    t.bigint "user_id"
+    t.bigint "document_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["categories_id"], name: "index_favorites_on_categories_id"
-    t.index ["documents_id"], name: "index_favorites_on_documents_id"
+    t.index ["document_id"], name: "index_favorites_on_document_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "friends", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,33 +76,33 @@ ActiveRecord::Schema.define(version: 20171017074558) do
   end
 
   create_table "histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "users_id"
-    t.bigint "documents_id"
+    t.bigint "user_id"
+    t.bigint "document_id"
     t.string "name_action"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["documents_id"], name: "index_histories_on_documents_id"
-    t.index ["users_id"], name: "index_histories_on_users_id"
+    t.index ["document_id"], name: "index_histories_on_document_id"
+    t.index ["user_id"], name: "index_histories_on_user_id"
   end
 
   create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "likeable_type"
     t.bigint "likeable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
-    t.index ["users_id"], name: "index_likes_on_users_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "users_id"
-    t.bigint "coins_id"
+    t.bigint "user_id"
+    t.bigint "coin_id"
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["coins_id"], name: "index_payments_on_coins_id"
-    t.index ["users_id"], name: "index_payments_on_users_id"
+    t.index ["coin_id"], name: "index_payments_on_coin_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -112,26 +112,26 @@ ActiveRecord::Schema.define(version: 20171017074558) do
     t.string "address"
     t.string "phone"
     t.string "password_digest"
-    t.integer "status"
+    t.boolean "status"
     t.string "avatar"
-    t.integer "role"
-    t.integer "total_icon"
+    t.boolean "role"
+    t.integer "total_coin"
     t.integer "number_free"
     t.integer "number_upload"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "category_documents", "categories", column: "categories_id"
-  add_foreign_key "category_documents", "documents", column: "documents_id"
-  add_foreign_key "comments", "documents", column: "documents_id"
-  add_foreign_key "comments", "users", column: "users_id"
-  add_foreign_key "documents", "users", column: "users_id"
-  add_foreign_key "favorites", "categories", column: "categories_id"
-  add_foreign_key "favorites", "documents", column: "documents_id"
-  add_foreign_key "histories", "documents", column: "documents_id"
-  add_foreign_key "histories", "users", column: "users_id"
-  add_foreign_key "likes", "users", column: "users_id"
-  add_foreign_key "payments", "coins", column: "coins_id"
-  add_foreign_key "payments", "users", column: "users_id"
+  add_foreign_key "category_documents", "categories"
+  add_foreign_key "category_documents", "documents"
+  add_foreign_key "comments", "documents"
+  add_foreign_key "comments", "users"
+  add_foreign_key "documents", "users"
+  add_foreign_key "favorites", "documents"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "histories", "documents"
+  add_foreign_key "histories", "users"
+  add_foreign_key "likes", "users"
+  add_foreign_key "payments", "coins"
+  add_foreign_key "payments", "users"
 end

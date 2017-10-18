@@ -1,4 +1,4 @@
 class Payment < ApplicationRecord
-  belongs_to :users
-  belongs_to :coins
+  belongs_to :user
+  belongs_to :coin
 end
