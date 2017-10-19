@@ -54,3 +54,4 @@ config/environments/*.local.yml
 
 # Database
 config/database.yml
+app/assets/images/
