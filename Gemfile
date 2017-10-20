@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Boostrap
+gem "bootstrap-sass", "3.3.7"
+gem "bootstrap-will_paginate", "1.0.0"
 # Config
 gem "config"
 # I18n
@@ -30,6 +33,8 @@ gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "jbuilder", "~> 2.5"
+gem "jquery-rails"
+gem "jquery-ui-rails", "5.0.5"
 # Faker
 gem "faker"
 # Use Redis adapter to run Action Cable in production
