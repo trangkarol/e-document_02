@@ -34,3 +34,17 @@ en:
   home:
     title: "Hello"
     placeholder_search: "Search..."
+  user:
+    sign_up: "Sign up"
+    already_account: "Already have an account?"
+    login: "Login"
+    name: "Name"
+    email: "Email"
+    password: "Password"
+    password_confirmation: "Confirmation"
+    btn_create: "Register now!"
+    avatar_size_fail: "Size of avatar is too long"
+  messages:
+    register_success: "Register succsessfully!"
+
+

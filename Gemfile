@@ -8,8 +8,12 @@ end
 # Boostrap
 gem "bootstrap-sass", "3.3.7"
 gem "bootstrap-will_paginate", "1.0.0"
+gem "bxslider-rails"
 # Config
+gem "bcrypt"
 gem "config"
+gem "file_validators"
+gem "font-awesome-rails"
 # I18n
 gem "i18n-js"
 # Mysql
@@ -23,6 +27,7 @@ gem "puma", "~> 3.7"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
+gem "sprockets-rails", "2.3.3"
 gem "uglifier", ">= 1.3.0"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem "therubyracer", platforms: :ruby

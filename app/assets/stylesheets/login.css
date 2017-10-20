@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%;
+  background-color: #26a69a;
+}
+html {
+  display: table;
+  margin: auto;
+}
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+.margin {
+  margin: 0 !important;
+}
+
+.btn-regiter {
+  background-color: #26a69a !important;
+  border: 0px !important;
+  font-size: 15px !important;
+}
+
+.div-image {
+  padding-bottom: 9px;
+}

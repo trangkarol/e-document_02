@@ -18,6 +18,19 @@ class User < ApplicationRecord
   # Create document
   has_many :documents, dependent: :destroy
 
+  # Validates
+  validates :name, presence: true, length: {maximum: Settings.user.name_length}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true,
+    length: {maximum: Settings.user.email_length},
+    format: {with: VALID_EMAIL_REGEX},
+    uniqueness: {case_sensitive: false}
+  has_secure_password
+  validates :password, presence: true, length: {minimum: Settings.user.password_length}, allow_nil: true
+  validates :avatar,
+    file_size: {less_than_or_equal_to: Settings.avatar_size.kilobytes},
+    file_content_type: {allow: ["image/jpeg", "image/png"]}
+
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end
