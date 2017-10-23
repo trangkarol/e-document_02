@@ -7,12 +7,12 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :address
       t.string :phone
       t.string :password_digest
-      t.boolean :status
+      t.boolean :status, default: 0
       t.string :avatar
-      t.boolean :role
-      t.integer :total_coin
-      t.integer :number_free
-      t.integer :number_upload
+      t.boolean :role, default: 1
+      t.integer :total_coin, default: 0
+      t.integer :number_free, default: 3
+      t.integer :number_upload, default: 0
 
       t.timestamps
     end
