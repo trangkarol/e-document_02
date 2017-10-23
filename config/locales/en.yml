@@ -44,6 +44,10 @@ en:
     password_confirmation: "Confirmation"
     btn_create: "Register now!"
     avatar_size_fail: "Size of avatar is too long"
+    forgot_password: "Forgot password?"
+    btn_login: "Login now!"
+    remember_me: "Remember me"
+    login_success: "Login succsessfully."
   messages:
     register_success: "Register succsessfully!"
 

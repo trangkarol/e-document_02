@@ -30,7 +30,6 @@ class User < ApplicationRecord
   validates :avatar,
     file_size: {less_than_or_equal_to: Settings.avatar_size.kilobytes},
     file_content_type: {allow: ["image/jpeg", "image/png"]}
-
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end
@@ -62,5 +61,12 @@ class User < ApplicationRecord
       total_coin -= Settings.user.minus_total_coin
     end
     update_attribute :total_coin, total_coin
+  end
+
+  # Returns true if the given token matches the digest.
+  def authenticated? attribute, token
+    digest = send "#{attribute}_digest"
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password? token
   end
 end

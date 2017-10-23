@@ -3,7 +3,7 @@
     <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
   <% end %>
   <div class="col s12 z-depth-6 card-panel">
-    <%= form_for @user, multipart: true do |f| %>
+    <%= form_for @user, url: signup_path, multipart: true do |f| %>
       <%= render "shared/error_messages", object: f.object %>
       <div class="row">
         <div class="input-field col s12 center">
@@ -58,7 +58,7 @@
         <div class="input-field col s12">
           <p class="margin center medium-small sign-up">
             <%= t "user.already_account" %>
-            <%= link_to t("user.login"), "#" %>
+            <%= link_to t("user.login"), login_path %>
           </p>
         </div>
       </div>
