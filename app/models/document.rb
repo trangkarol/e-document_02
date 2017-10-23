@@ -10,4 +10,6 @@ class Document < ApplicationRecord
   # Category of document
   has_many :category_documents, dependent: :destroy
   has_many :categories, through: :category_documents
+
+  validates :description , presence: true, length: {minimum: Settings.document.description_length}, allow_nil: true
 end
