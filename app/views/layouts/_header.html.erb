@@ -1,22 +1,22 @@
-<div class="header">
-  <div class="wrap">
-    <div class="logo">
-      <%= link_to image_tag("logo.png"), "#" %>
+<!-- Carousel -->
+<div id="theme-carousel" class="carousel slide" data-ride="carousel">
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "carousel1.jpg", style: "width: 100%"%>
     </div>
-    <div class="top-nav">
-      <ul class="flexy-menu thick orange">
-        <li class="active"><%= link_to t("home.title") %></li>
-      </ul>
-      <div class="search-box">
-        <div id="sb-search" class="sb-search">
-          <form>
-            <input class="sb-search-input" placeholder="<%= t 'home.placeholder_search' %>" type="search" name="search" id="search">
-            <input class="sb-search-submit" type="submit" value="">
-            <span class="sb-icon-search"></span>
-          </form>
-        </div>
-      </div>
+    <div class="item">
+      <%= image_tag "carousel2.jpg", style: "width: 100%"%>
     </div>
-    <div class="clear"> </div>
+    <div class="item">
+      <%= image_tag "carousel3.jpg", style: "width: 100%"%>
+    </div>
   </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#theme-carousel" role="button" data-slide="prev">
+    <div class="carousel-control-arrow">&#8249;</div>
+  </a>
+  <a class="right carousel-control" href="#theme-carousel" role="button" data-slide="next">
+    <div class="carousel-control-arrow">&#8250;</div>
+  </a>
 </div>

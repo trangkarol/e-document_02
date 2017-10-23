@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # List friends
-  has_many :firends, dependent: :destroy
+  has_many :friends, dependent: :destroy
   # Management payments coins
   has_many :payments, dependent: :destroy
   has_many :coins, through: :payments
