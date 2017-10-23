@@ -1,26 +1,27 @@
 class UsersController < ApplicationController
-  layout "user"
-  def new
-    @user = User.new
-  end
+  before_action :load_user, only: [:update, :edit, :show]
 
-  def create
-    @user = User.new user_params
+  def show; end
 
-    if @user.valid? && upload_file(params[:user][:avatar]) && @user.save
-      flash[:success] = t "messages.register_success"
+  def update
+    if @user.update_attributes(user_params)
+      flash[:success] = t "user.update_success"
+      redirect_to @user
     else
-      render :new
+      render :edit
     end
   end
 
-  def edit; end
-
-  def update; end
-
   private
 
+  def load_user
+    @user = User.includes(:documents, :friends).find_by_id params[:id]
+    return if @user
+    flash[:danger] = t "user.user_not_found"
+    redirect_to root_path
+  end
+
   def user_params
-    params.require(:user).permit :name, :email, :password, :password_confirmation, :birthday
+    params.require(:user).permit :phone, :address, :birthday, :avatar
   end
 end
