@@ -30,9 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  read_more: "Read more"
   hello: "Hello world"
   home:
-    title: "Hello"
+    title: "Home"
     placeholder_search: "Search..."
   user:
     sign_up: "Sign up"
@@ -50,5 +51,5 @@ en:
     login_success: "Login succsessfully."
   messages:
     register_success: "Register succsessfully!"
-
-
+  document:
+    list_documents: "List documents"

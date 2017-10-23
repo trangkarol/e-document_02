@@ -1,4 +1,5 @@
 avatar_size: 1024
+paginate_number: 12
 user:
   minimum_coin: 0
   minimum_number_free: 0
