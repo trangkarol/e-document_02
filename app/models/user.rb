@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   # List friends
-  has_many :firends, dependent: :destroy
+  has_many :friends, dependent: :destroy
   # Management payments coins
   has_many :payments, dependent: :destroy
   has_many :coins, through: :payments
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :favority_documents, through: :comments, source: :documents
   # Create document
   has_many :documents, dependent: :destroy
+  mount_uploader :avatar, AvatarUploader
 
   # Validates
   validates :name, presence: true, length: {maximum: Settings.user.name_length}
@@ -27,9 +28,6 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.user.password_length}, allow_nil: true
-  validates :avatar,
-    file_size: {less_than_or_equal_to: Settings.avatar_size.kilobytes},
-    file_content_type: {allow: ["image/jpeg", "image/png"]}
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end

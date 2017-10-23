@@ -30,9 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  read_more: "Read more"
   hello: "Hello world"
   home:
-    title: "Hello"
+    title: "Home"
     placeholder_search: "Search..."
   user:
     sign_up: "Sign up"
@@ -48,7 +49,15 @@ en:
     btn_login: "Login now!"
     remember_me: "Remember me"
     login_success: "Login succsessfully."
+    edit: "Edit"
+    profile: "Profile"
+    number_upload: "Number upload"
+    number_free: "Number free"
+    total_coin: "Total icon"
+    list_friends: "List friends"
+    buy_card: "Buy card"
   messages:
     register_success: "Register succsessfully!"
-
-
+  document:
+    list_documents: "List documents"
+    up_load_file: "Upload File"

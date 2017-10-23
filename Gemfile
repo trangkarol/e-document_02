@@ -11,6 +11,7 @@ gem "bootstrap-will_paginate", "1.0.0"
 gem "bxslider-rails"
 # Config
 gem "bcrypt"
+gem "carrierwave", "~> 1.0"
 gem "config"
 gem "file_validators"
 gem "font-awesome-rails"
@@ -23,12 +24,14 @@ gem "rails", "~> 5.1.4"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3"
 # Use Puma as the app server
+gem "mini_magick", "3.7.0"
 gem "puma", "~> 3.7"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "sprockets-rails", "2.3.3"
 gem "uglifier", ">= 1.3.0"
+gem "will_paginate", "3.1.5"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem "therubyracer", platforms: :ruby
 

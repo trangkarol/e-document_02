@@ -11,9 +11,15 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == Settings.user.remember_me ? remember(user) : forget(user)
       flash[:success] = t "user.login_success"
+      redirect_to root_path
     else
       flash[:danger] = t "user.login_fail"
       render :new
     end
+  end
+
+  def destroy
+    log_out if logged_in?
+    redirect_to root_path
   end
 end

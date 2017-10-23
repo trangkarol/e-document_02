@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="#" title="Animal Adoption Bootstrap Theme">
+        <img class="logo" src="assets/logo.png" alt="Animal Adoption Bootstrap Theme" style="margin-top:5px;" />
+            </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to t("home.title"), root_path, class: "smooth-scroll" %></li>
+        <% if logged_in? %>
+          <li><%= link_to current_user.name, current_user, class: "smooth-scroll" %></li>
+          <li><%= link_to t("user.logout"), logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to t("user.login"), login_path, class: "smooth-scroll" %></li>
+          <li><%= link_to t("user.sign_up"), signup_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
