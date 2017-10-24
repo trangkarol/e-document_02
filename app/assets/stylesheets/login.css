@@ -24,3 +24,7 @@ body {
 .div-image {
   padding-bottom: 9px;
 }
+
+#login-page {
+  width: 500px;
+}

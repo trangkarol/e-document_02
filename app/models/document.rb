@@ -10,6 +10,7 @@ class Document < ApplicationRecord
   # Category of document
   has_many :category_documents, dependent: :destroy
   has_many :categories, through: :category_documents
+  default_scope ->{order(created_at: :desc)}
 
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader
