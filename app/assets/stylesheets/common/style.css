@@ -142,3 +142,17 @@ section{
 .clear {
   clear: both;
 }
+
+#firends_request {
+  border: 1px dotted #d8d8d8;
+  background: #f8f8f8;
+}
+
+.title-name {
+  font-weight: bold;
+}
+
+.email-user {
+  color: gray;
+  margin-top: -10px;
+}
