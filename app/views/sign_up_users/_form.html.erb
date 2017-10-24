@@ -1,7 +1,4 @@
 <div id="login-page" class="row">
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-  <% end %>
   <div class="col s12 z-depth-6 card-panel">
     <%= form_for @user, url: signup_path, multipart: true do |f| %>
       <%= render "shared/error_messages", object: f.object %>

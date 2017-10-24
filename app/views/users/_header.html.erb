@@ -7,6 +7,6 @@
   </div>
 </div>
 <div class="row">
-  <%= image_tag @user.avatar.url, class: "img-avatar" %>
+  <%= image_tag @user.avatar.url, class: "img-avatar" if @user.avatar?%>
   <h3 class="name-user"><%= @user.name %></h3>
 </div>
