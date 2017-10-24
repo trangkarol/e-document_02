@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171021083104) do
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.integer "number_download"
-    t.string "url"
+    t.string "file"
     t.integer "size"
     t.boolean "status"
     t.bigint "user_id"
@@ -119,7 +119,7 @@ ActiveRecord::Schema.define(version: 20171021083104) do
     t.boolean "role", default: true
     t.integer "total_coin", default: 0
     t.integer "number_free", default: 3
-    t.integer "number_upload", default: 1
+    t.integer "number_upload", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -7,5 +7,6 @@
   <body data-locale="<%= I18n.locale %>">
     <%= render "layouts/navbar" %>
     <%= yield %>
+    <%= content_for :javascript %>
   </body>
 </html>
