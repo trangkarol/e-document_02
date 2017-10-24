@@ -9,5 +9,13 @@ Rails.application.routes.draw do
   post "/document_new", to:"documents#create"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :users
+  resources :users do
+    member do
+      get :document
+      get :firend
+      get :upload
+      post :upload
+    end
+  end
+  resources :documents
 end
