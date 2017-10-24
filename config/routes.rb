@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/signup", to: "sign_up_users#new"
   post "/signup", to: "sign_up_users#create"
-  get "/document_new", to: "documents#new"
-  post "/document_new", to:"documents#create"
+  get "documents/new"
+  post "documents/create"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users

@@ -12,10 +12,17 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build document_params
-    @document.save
-    respond_to do |format|
-      format.js
+    if @document.save
+
+    else
+      respond_to do |format|
+        format.js
+      end
     end
+
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
   def edit; end
