@@ -16,7 +16,7 @@ User.create!(
   password: "123123",
   password_confirmation: "123123",
   status: 1,
-  avatar: Faker::Avatar.image,
+  # avatar: Faker::Avatar.image,
   role: 0,
   total_coin: 50,
   number_free: 3,
@@ -32,7 +32,7 @@ User.create!(
     password: "123123",
     password_confirmation: "123123",
     status: random.rand(0..1),
-    avatar: Faker::Avatar.image,
+    # avatar: Faker::Avatar.image,
     role: random.rand(0..1),
     total_coin: 0,
     number_free: 3,
@@ -55,7 +55,7 @@ users.each do |user|
     document = user.documents.create!(
       name: Faker::Name.name,
       number_download: 0,
-      url: Faker::File.file_name("public/upload", "example", "pdf"),
+      file: Faker::File.file_name("public/upload", "example", "pdf"),
       description: Faker::Lorem.sentence(10),
       size: 1000,
       status: random.rand(0..2)

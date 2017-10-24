@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_document
+
+  end
+
   private
 
   def load_user

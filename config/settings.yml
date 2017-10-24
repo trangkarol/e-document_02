@@ -15,4 +15,6 @@ user:
   remember_me: "1"
 coin:
 document:
-
+  name_length: 5
+  name_max_length: 200
+  description_length: 4

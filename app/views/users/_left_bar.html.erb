@@ -10,13 +10,17 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#"><%= t "user.profile" %></a></li>
-        <li><a href="#"><%= t "document.list_document" %></a></li>
-        <li><a href="#"><%= t "user.list_friends" %></a></li>
-        <li><a href="#"><%= t "document.up_load_file" %></a></li>
-        <li><a href="#"><%= t "document.buy_card" %></a></li>
+        <li class="active" id="profile"><%= link_to t("user.profile"), "#" %></li>
+        <li id="list_document"><%= link_to t("document.list_document"), "#" %></li>
+        <li id="list_friends"><%= link_to t("user.list_friends"), "#" %></li>
+        <li><%= link_to t("document.up_load_file"), "javascript:void(0)", id: "up_load_file" %></li>
+        <li id="buy_card"><%= link_to t("document.buy_card"), "#" %></li>
       </ul>
     </div>
   </div>
 </nav>
-
+<%= content_for :javascript do %>
+  <script type="text/javascript">
+    <%= render "document.js" %>
+  </script>
+<% end %>

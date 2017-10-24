@@ -49,6 +49,7 @@ en:
     btn_login: "Login now!"
     remember_me: "Remember me"
     login_success: "Login succsessfully."
+    login_fail: "Login fail."
     edit: "Edit"
     profile: "Profile"
     number_upload: "Number upload"
@@ -61,3 +62,4 @@ en:
   document:
     list_documents: "List documents"
     up_load_file: "Upload File"
+    create: "Create"
