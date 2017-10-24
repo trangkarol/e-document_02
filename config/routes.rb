@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post "/signup", to: "sign_up_users#create"
   get "/document_new", to: "documents#new"
   post "/document_new", to:"documents#create"
+  post "/add_firend", to:"friends#create"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
@@ -18,4 +19,5 @@ Rails.application.routes.draw do
     end
   end
   resources :documents
+  resources :friends
 end

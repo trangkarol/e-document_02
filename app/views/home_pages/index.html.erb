@@ -1,5 +1,9 @@
 <%= render "layouts/header" %>
 <div class="container-stories">
   <%= render "list_documents" %>
-  <%= render "list_friends_request" %>
+  <div class="col-md-3">
+    <%= render "list_friends_request" %>
+    <%= render "list_friends_accpeting" %>
+    <%= render "history" %>
+  </div>
 </div>

@@ -1,19 +1,24 @@
-<div class="col-md-4" id="firends_request">
-  <div class="page-header" id="gallery">
-    <h1 class="text-center text-primary"><%= t "user.firends_request" %></h1>
+<div class="col-md-12" id="firends_request">
+  <div class="page-header title-header text-uppercase" id="gallery">
+    <h4 class="text-center text-primary"><%= t "user.firends_request" %></h4>
   </div>
-  <% @friend_request.each do |member| %>
-    <div class="row">
-      <div class="col-md-4">
-        <div class="well">
-          <img class="img-responsive" src="assets/gallery/gallery1.jpg" />
+  <% if @list_friend_request %>
+    <% @list_friend_request.each do |member| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well">
+            <img class="img-responsive" src="assets/gallery/gallery1.jpg" />
+          </div>
+        </div>
+        <div class="col-md-8">
+          <%= form_tag add_firend_path, method: :post do |f| %>
+            <p class="title-name"><%= link_to member.name, member %></p>
+            <p class="email-user"><%= member.email %></p>
+            <%= hidden_field_tag :friend_id, member.id %>
+            <%= submit_tag t("add_friend"), data: {confirm: t("friend.comfirm_add_friend", name: member.name)}, class: "btn-primary btn" %>
+          <% end %>
         </div>
       </div>
-      <div class="col-md-8">
-        <p class="title-name"><%= member.name %></p>
-        <p class="email-user"><%= member.email %></p>
-        <%= link_to t("add_friend"), "#", class: "btn-primary btn" %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

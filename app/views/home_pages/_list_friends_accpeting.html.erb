@@ -1,0 +1,20 @@
+<div class="col-md-12" id="firends_request">
+  <div class="page-header title-header text-uppercase" id="gallery">
+    <h4 class="text-center text-primary"><%= t "user.list_friends" %></h4>
+  </div>
+  <% if @list_friend_accpeting %>
+    <% @list_friend_accpeting.each do |member| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="well">
+            <img class="img-responsive" src="assets/gallery/gallery1.jpg" />
+          </div>
+        </div>
+        <div class="col-md-8">
+            <p class="title-name"><%= link_to member.friend.name, member.friend %></p>
+            <p class="email-user"><%= member.friend.email %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -73,5 +73,11 @@ en:
     downloaded: " Downloaded"
     delete_success: "Delete succsessfully!"
     delete_fail: "Delete fail!"
+    list_friends: "List friend"
+    history: "History"
+    please_log_in: "Plese login to system"
   error:
     lbl_content: "List error"
+  friend:
+    comfirm_add_friend: "Do you want add %{name} is your friend?"
+    create_fail: "You don't add friend"
