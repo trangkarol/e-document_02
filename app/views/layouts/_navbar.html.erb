@@ -17,10 +17,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("home.title"), root_path, class: "smooth-scroll" %></li>
         <% if logged_in? %>
-          <li><%= link_to current_user.name, "#", class: "smooth-scroll" %></li>
+          <li><%= link_to current_user.name, current_user, class: "smooth-scroll" %></li>
+          <li><%= link_to t("user.logout"), logout_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to link_to t("user.login"), login_path, class: "smooth-scroll" %></li>
-          <li><%= link_to t("user.sign_up"), signup_path, class: "smooth-scroll" %></li>
+          <li><%= link_to t("user.login"), login_path, class: "smooth-scroll" %></li>
+          <li><%= link_to t("user.sign_up"), signup_path %></li>
         <% end %>
       </ul>
     </div>
