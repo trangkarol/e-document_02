@@ -1,0 +1,19 @@
+<div class="col-md-4" id="firends_request">
+  <div class="page-header" id="gallery">
+    <h1 class="text-center text-primary"><%= t "user.firends_request" %></h1>
+  </div>
+  <% @friend_request.each do |member| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="well">
+          <img class="img-responsive" src="assets/gallery/gallery1.jpg" />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <p class="title-name"><%= member.name %></p>
+        <p class="email-user"><%= member.email %></p>
+        <%= link_to t("add_friend"), "#", class: "button-more-success btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>

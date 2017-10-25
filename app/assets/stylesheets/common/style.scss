@@ -1,3 +1,9 @@
+/* mixins, variables, etc. */
+  $gray-linght: #d8d8d8;
+  $litte-gray: #ccc;
+  $less-gray: #777;
+  $small-gray: #e5e5e5;
+
 .img-avatar {
   width: 10em;
   height: 10em;
@@ -17,7 +23,7 @@
   position: absolute;
   bottom: 22%;
   left: 20%;
-  color: #fff;
+  color: white;
 }
 
 body,html{
@@ -63,11 +69,11 @@ nav.sidebar, .main{
   }
 
   nav.sidebar .navbar-nav > li:first-child{
-    border-top: 1px #e5e5e5 solid;
+    border-top: 1px $small-gray solid;
   }
 
   nav.sidebar .navbar-nav > li{
-    border-bottom: 1px #e5e5e5 solid;
+    border-bottom: 1px $small-gray solid;
   }
 
   nav.sidebar .navbar-nav .open .dropdown-menu {
@@ -86,7 +92,7 @@ nav.sidebar, .main{
   }
 
   .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-    color: #777;
+    color: $less-gray;
   }
 
   nav.sidebar{
@@ -128,7 +134,7 @@ nav.sidebar, .main{
 }
 
 nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
-  color: #CCC;
+  color: $litte-gray;
   background-color: transparent;
 }
 
@@ -141,4 +147,22 @@ section{
 
 .clear {
   clear: both;
+}
+
+#firends_request {
+  border: 1px dotted $gray-linght;
+  background:  $gray-linght;
+}
+
+.title-name {
+  font-weight: bold;
+}
+
+.email-user {
+  color: gray;
+  margin-top: -10px;
+}
+
+.logo-web {
+  margin-top: 21px;
 }

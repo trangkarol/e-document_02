@@ -1,14 +1,13 @@
 <% provide :title, t("user.login") %>
 <div id="login-page" class="row">
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-  <% end %>
   <div class="col s12 z-depth-6 card-panel">
     <%= form_for :session, url: login_path do |f| %>
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
       <div class="row">
         <div class="input-field col s12 center">
-          <%= link_to image_tag("logo.png"), "#" %>
-          <p class="center login-form-text"></p>
+          <h4 class="btn btn-regiter"><%= t "user.login" %></h4>
         </div>
       </div>
       <div class="row margin">
@@ -32,8 +31,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <%= f.submit t("user.btn_login"), class: "btn waves-effect waves-light col s12" %>
+        <div class="input-field col s12 center">
+          <%= f.submit t("user.btn_login"), class: "btn btn-regiter" %>
         </div>
       </div>
       <div class="row">

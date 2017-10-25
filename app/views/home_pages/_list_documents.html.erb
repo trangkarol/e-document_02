@@ -1,24 +1,26 @@
-<div class="container-stories">
-  <div class="container">
-    <div class="page-header" id="stories">
-      <h1 class="text-primary text-center"><%= t "document.list_documents" %></h1>
-    </div>
-      <% @documents.each do |document| %>
-        <div class="col-md-6" style="margin-bottom: 10px;">
-          <div class="row">
-            <div class="col-md-6">
-              <%= image_tag document.image.url if document.image? %>
-            </div>
-            <div class="col-md-6">
-              <h3><%= document.name %></h3>
-              <br />
-              <p class="text-justify"><%= document.description %></p>
-              <br />
-              <%= link_to t("read_more"), "#", class: "button-more-success btn" %>
-              <br />
-            </div>
+<div class="col-md-8">
+  <div class="page-header" id="stories">
+    <h1 class="text-primary text-center"><%= t "document.list_documents" %></h1>
+  </div>
+    <% @documents.each do |document| %>
+      <div class="col-md-6" style="margin-bottom: 10px;">
+        <div class="row">
+          <div class="col-md-6">
+            <%= image_tag document.image.url, class: "img-responsive"%>
+          </div>
+          <div class="col-md-6">
+            <h3><%= document.name %></h3>
+            <br />
+            <p class="text-justify"><%= document.description %></p>
+            <br />
+            <%= link_to t("read_more"), "#", class: "button-more-success btn" %>
+            <br />
           </div>
         </div>
-      <% end %>
-  </div>
+      </div>
+    <% end %>
+    <div class="clear"></div>
+    <div class="col-md-offset-7">
+      <%= will_paginate @documents %>
+    </div>
 </div>

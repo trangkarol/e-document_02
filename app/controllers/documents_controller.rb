@@ -1,4 +1,6 @@
 class DocumentsController < ApplicationController
+  before_action :logged_in_user, only: [:new, :create]
+
   def new
     @document = Document.new
     html = render_to_string "documents/_document_form", locals: {button_text: t("document.create")}, layout: false
@@ -10,12 +12,9 @@ class DocumentsController < ApplicationController
 
   def create
     @document = current_user.documents.build document_params
-    if @document.save
-      redirect_to root_path
-    else
-      respond_to do |format|
-        format.js
-      end
+    @document.save
+    respond_to do |format|
+      format.js
     end
   end
 
