@@ -1,0 +1,37 @@
+<%= render "header" %>
+<div class="container-stories">
+  <div class="container">
+    <%= render "left_bar" %>
+    <div class="col-md-9" id="div-show-user">
+      <% @list_document.each do |document| %>
+        <div class="col-md-12" style="margin-bottom: 10px;">
+          <div class="col-md-3">
+            <%= image_tag document.image.url, class: "img-responsive"%>
+        </div>
+          </div>
+          <div class="col-md-9">
+            <h3><%= document.name %></h3>
+            <p class="text-justify"><%= document.description %></p>
+            <% if check_owner?(document.owner.id) %>
+              <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
+              <%= link_to t("document.delete"), document, method: :delete, data: {confirm: t("document.comfirm_delete")}, class: "btn-danger btn" %>
+            <% end %>
+            <%= link_to t("read_more"), "#", class: "btn-info btn" %>
+            <p>
+              <i class="fa fa-download" aria-hidden="true"></i>
+              <span><%= document.number_download %><%= t "document.downloaded" %></span>
+            </p>
+            <p>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span><%= document.owner.name %></span>
+            </p>
+          </div>
+        </div>
+      <% end %>
+      <div class="clear"></div>
+      <div class="col-md-offset-7">
+        <%= will_paginate @list_document %>
+      </div>
+    </div>
+  </div>
+</div>

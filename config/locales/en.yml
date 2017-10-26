@@ -66,5 +66,12 @@ en:
     list_documents: "List documents"
     up_load_file: "Upload File"
     create: "Create"
+    document_not_found: "Document not found."
+    create: "Create"
+    delete: "Delete"
+    comfirm_delete: "Are you want to delete this documents?"
+    downloaded: " Downloaded"
+    delete_success: "Delete succsessfully!"
+    delete_fail: "Delete fail!"
   error:
     lbl_content: "List error"

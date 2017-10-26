@@ -1,5 +1,5 @@
 class Document < ApplicationRecord
-  has_many :likes, as: :likable, dependent: :destroy
+  has_many :likes, as: :likable
   # User create documents
   belongs_to :owner, class_name: User.name, foreign_key: :user_id
   # Management history download, upload of users
