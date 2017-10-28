@@ -18,7 +18,6 @@ class User < ApplicationRecord
   # Create document
   has_many :documents, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
-
   # Validates
   validates :name, presence: true, length: {maximum: Settings.user.name_length}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -28,6 +27,10 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.user.password_length}, allow_nil: true
+  scope :friends_request, lambda{|current_user_id, firend_ids|
+    where("id NOT IN (?) AND id != ?", firend_ids, current_user_id)
+  }
+
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end
