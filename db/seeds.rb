@@ -53,7 +53,7 @@ users.each do |user|
     document = user.documents.create!(
       name: Faker::Name.name,
       number_download: 0,
-      file: Faker::File.file_name("public/upload", "example", "pdf"),
+      file: Faker::File.file_name("public/upload", "dokkai1", "pdf"),
       description: Faker::Lorem.sentence(10),
       size: 1000,
       status: random.rand(0..2)

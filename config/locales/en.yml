@@ -33,6 +33,8 @@ en:
   title_web: "Download anything"
   read_more: "Read more"
   add_friend: "Add friend"
+  accept: "Acccept"
+  cancel: "Cancel"
   hello: "Hello world"
   home:
     title: "Home"
@@ -59,7 +61,10 @@ en:
     total_coin: "Total icon"
     list_friends: "List friends"
     buy_card: "Buy card"
-    firends_request: "Friend request"
+    firends_request: "Request"
+    please_log_in: "Plese login to system"
+    list_friends_invition: "Accepting"
+    user_not_found: "User not found."
   messages:
     register_success: "Register succsessfully!"
   document:
@@ -81,3 +86,15 @@ en:
   friend:
     comfirm_add_friend: "Do you want add %{name} is your friend?"
     create_fail: "You don't add friend"
+    messages_extension_error: "Only formats are allowed : %{name}"
+  error:
+    lbl_content: "List error"
+  friend:
+    comfirm_add_friend: "Do you want to invite %{name} is your friend?"
+    comfirm_accept_friend: "Do you want to accept %{name} is your friend?"
+    comfirm_unfriend: "Do you want to unfriend %{name} is your friend?"
+    comfirm_cancel_friend: "Do you want to cancel invition %{name} is your friend?"
+    create_sucess: "You added friend succsessfully!"
+    your_friend: "Friend"
+    unfriend_success: "Unfriend succsessfully."
+    unfriend_fail: "Unfriend is fail."

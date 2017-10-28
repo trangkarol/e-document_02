@@ -21,3 +21,6 @@ document:
 friend:
   request: 0
   accept: 1
+  paginate_number: 8
+friend:
+  accpet_request: 1
