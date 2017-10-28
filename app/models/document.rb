@@ -10,6 +10,8 @@ class Document < ApplicationRecord
   # Category of document
   has_many :category_documents, dependent: :destroy
   has_many :categories, through: :category_documents
+  has_many :favorites, dependent: :destroy
+
   default_scope ->{order(created_at: :desc)}
 
   mount_uploader :image, ImageUploader
@@ -21,4 +23,6 @@ class Document < ApplicationRecord
   validates :description,
     presence: true,
     length: {minimum: Settings.document.description_length}
+  validates :image, presence: true
+  validates :file, presence: true
 end

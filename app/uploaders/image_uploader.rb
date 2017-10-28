@@ -43,7 +43,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path("image3.jpg")
+    ActionController::Base.helpers.asset_path("document.jpg")
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

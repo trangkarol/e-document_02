@@ -1,33 +1,45 @@
 <div class="col-md-8" id="list-documents">
-  <div class="page-header title-header text-uppercase" id="stories">
-    <h4 class="text-primary text-center"><%= t "document.list_documents" %></h4>
+  <div class="col-md-12 destacados">
+    <div class="col-md-4">
+      <div class="box1">
+          <h4><%= t "document.list_documents" %></h4>
+      </div>
+    </div>
   </div>
-    <% @documents.each do |document| %>
-      <div class="col-md-6" style="margin-bottom: 10px;">
-        <div class="row">
-          <div class="col-md-6">
-            <%= image_tag document.image.url, class: "img-responsive"%>
-          </div>
-          <div class="col-md-6">
-            <h3><%= document.name %></h3>
-            <p class="text-justify"><%= document.description %></p>
-            <%= link_to t("read_more"), document, class: "btn-info btn" %>
-            <br />
-            <br />
-            <p>
-              <i class="fa fa-download" aria-hidden="true"></i>
-              <span><%= document.number_download %><%= t "document.downloaded" %></span>
-            </p>
-            <p>
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span><%= document.owner.name %></span>
-            </p>
-          </div>
+  <% @documents.each do |document| %>
+    <div class="col-md-6 style-document">
+      <div class="row">
+        <div class="col-md-6">
+          <%= image_tag document.image.url, class: "img-responsive"%>
+        </div>
+        <div class="col-md-6">
+          <h3><%= document.name %></h3>
+          <p class="text-justify text-document"><%= document.description[0..70] %>...</p>
+          <%= link_to t("read_more"),user_document_path(document.owner.id, document), class: "btn-info btn" %>
+          <br />
+          <br />
+          <p>
+            <i class="fa fa-download" aria-hidden="true"></i>
+            <span><%= document.number_download %><%= t "document.downloaded" %></span>
+          </p>
+          <p>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span><%= document.owner.name %></span>
+          </p>
+          <p>
+            <i class="fa fa-clock-o"></i>
+            <span><%= document.created_at %></span>
+          </p>
+          <p>
+            <i class="fa fa-comment"></i>
+            <span></span>
+          </p>
         </div>
       </div>
-    <% end %>
-    <div class="clear"></div>
-    <div class="col-md-offset-7">
-      <%= will_paginate @documents %>
     </div>
+  <% end %>
+  <div class="clear"></div>
+  <div class="col-md-offset-7">
+    <%= will_paginate @documents %>
+  </div>
 </div>

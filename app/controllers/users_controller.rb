@@ -13,21 +13,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def document
-    @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
-    render :document
-  end
-
   private
+
+  def user_params
+    params.require(:user).permit :phone, :address, :birthday, :avatar
+  end
 
   def load_user
     @user = User.find_by_id params[:id]
     return if @user
     flash[:danger] = t "user.user_not_found"
     redirect_to root_path
-  end
-
-  def user_params
-    params.require(:user).permit :phone, :address, :birthday, :avatar
   end
 end

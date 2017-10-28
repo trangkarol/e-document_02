@@ -187,3 +187,149 @@ section{
     font-weight: bold;
   }
 }
+
+.destacados{
+  padding: 70px 0;
+  text-align: center;
+
+}
+
+.box1 {
+  position: relative;
+  z-index: 1;
+  width: 81%;
+  padding: 15px 10px 5px 10px;
+  margin: 20px auto;
+  border: 1px solid #c8c8c8;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+  background: #E4C054;
+  border-radius: 4px;
+}
+
+.box1 h3 {
+  position:relative;
+  padding:10px 30px;
+  margin:0 -30px 20px;
+  font-size:28px;
+  line-height:32px;
+  font-weight:bold;
+  text-align:center;
+  color:#fff;
+  background:#cc0000;
+  /* css3 extras */
+  text-shadow:0 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+     -moz-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+          box-shadow:0 1px 1px rgba(0,0,0,0.2);
+  /* See "NOTE 1" */
+  zoom:1;
+}
+
+.box1 h3:before,
+.box1 h3:after {
+  content:"";
+  position:absolute;
+  /* See "NOTE 2" */
+  z-index:-1;
+  top:100%;
+  left:0;
+  border-width:0 10px 10px 0;
+  border-style:solid;
+  border-color:transparent maroon;
+}
+
+.box1 h3:after {
+  left:auto;
+  right:0;
+  border-width:0 0 10px 10px;
+}
+
+.box1 h4 {
+  position: relative;
+  padding: 5px 30px;
+  margin: 0 -30px 20px;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  background: #87A800;
+  /* css3 extras */
+  text-shadow:0 1px 1px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+     -moz-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+          box-shadow:0 1px 1px rgba(0,0,0,0.2);
+  /* See "NOTE 1" */
+  zoom:1;
+}
+
+.box1 h4:before,
+.box1 h4:after {
+  content:"";
+  position:absolute;
+  /* See "NOTE 2" */
+  z-index:-1;
+  top:100%;
+  left:0;
+  border-width:0 10px 10px 0;
+  border-style:solid;
+  border-color:transparent #647D01;
+}
+
+.box1 h4:after {
+  left:auto;
+  right:0;
+  border-width:0 0 10px 10px;
+}
+
+.fb-profile img.fb-image-lg{
+  z-index: 0;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.fb-image-profile
+{
+  margin: -90px 10px 0px 50px;
+  z-index: 9;
+  width: 20%;
+}
+
+@media (max-width:768px)
+{
+  .fb-profile-text>h1{
+    font-weight: 700;
+    font-size:16px;
+  }
+
+  .fb-image-profile
+  {
+    margin: -45px 10px 0px 25px;
+    z-index: 9;
+    width: 20%;
+  }
+}
+
+.style-document {
+  margin-bottom: 10px;
+  border: 1px solid #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #d8d8d8;
+  height: 300px;
+  width: 45% !important;
+  margin-right: 2%;
+  padding: 1%;
+}
+
+.text-document {
+  overflow: hidden;
+  height: 57px;
+}
+
+.document-index {
+  margin-bottom: 10px;
+  border: 1px solid #f8f8f8;
+  padding: 1%;
+  border-radius: 7px;
+  box-shadow: 1px 1px 1px #d8d8d8;
+}
