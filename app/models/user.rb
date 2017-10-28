@@ -31,6 +31,7 @@ class User < ApplicationRecord
     where("id NOT IN (?) AND id != ?", firend_ids, current_user_id)
   }
 
+  scope :not_current_user, ->(current_user_id){where("id != ?", current_user_id)}
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end

@@ -1,23 +1,25 @@
 class DocumentsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
   before_action :load_document, only: [:show, :destroy]
+  before_action :load_user_url, only: [:new, :create, :index, :destroy]
+
+  def index
+    @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
+  end
 
   def show; end
 
   def new
     @document = Document.new
-    html = render_to_string "documents/_document_form", locals: {button_text: t("document.create")}, layout: false
-    respond_to do |format|
-      format.html{render text: html}
-      format.json{render json: {html: html}}
-    end
   end
 
   def create
     @document = current_user.documents.build document_params
-    @document.save
-    respond_to do |format|
-      format.js
+    if @document.save
+      flash[:success] = t "messages.register_success"
+      redirect_to user_documents_path(current_user)
+    else
+      render :new
     end
   end
 
@@ -29,7 +31,7 @@ class DocumentsController < ApplicationController
     else
       flash[:danger] = t "document.delete_fail"
     end
-    redirect_to request.referrer || root_url
+    redirect_to user_documents_path(current_user)
   end
 
   private
@@ -42,6 +44,6 @@ class DocumentsController < ApplicationController
     @document = Document.includes(:owner).find_by_id params[:id]
     return if @document
     flash[:danger] = t "document.document_not_found"
-    redirect_to root_path
+    redirect_to user_documents_path(current_user)
   end
 end
