@@ -1,20 +1,31 @@
-<div class="col-md-12" id="firends_request">
-  <div class="page-header title-header text-uppercase" id="gallery">
-    <h4 class="text-center text-primary"><%= t "user.list_friends" %></h4>
+<div class="widget-sidebar">
+  <h2 class="title-widget-sidebar">// <%= t "user.list_friends_invition" %></h2>
+    <div class="content-widget-sidebar">
+      <ul>
+       <% if @list_friends_accept %>
+        <% @list_friends_accept.each do |member| %>
+          <li class="recent-post">
+            <div class="post-img">
+              <%= image_tag member.user.avatar.url, class: "img-responsive"%>
+            </div>
+            <div>
+              <p class="title-name"><%= link_to member.user.name, member.user %></p>
+              <p class="email-user"><%= member.user.email %></p>
+              <%= link_to t("accept"),
+                user_friend_path(current_user.id, member),
+                method: :patch,
+                data: {confirm: t("friend.comfirm_accept_friend", name: member.user.name)},
+                class: "button-more-success btn" %>
+              <%= link_to t("cancel"),
+                  user_friend_path(current_user.id, member),
+                  method: :delete,
+                  data: {confirm: t("friend.comfirm_cancel_friend", name: member.user.name)},
+                  class: "btn-danger btn" %>
+            </div>
+          </li>
+          <hr>
+        <% end %>
+      <% end %>
+      </ul>
   </div>
-  <% if @list_friend_accpeting %>
-    <% @list_friend_accpeting.each do |member| %>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="well">
-            <img class="img-responsive" src="assets/gallery/gallery1.jpg" />
-          </div>
-        </div>
-        <div class="col-md-8">
-            <p class="title-name"><%= link_to member.friend.name, member.friend %></p>
-            <p class="email-user"><%= member.friend.email %></p>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
 </div>

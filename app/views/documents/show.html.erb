@@ -26,7 +26,7 @@
         <!-- Botones de compra -->
         <div class="section section-download">
             <% if !check_owner?(@document.owner.id) %>
-              <%= link_to t("download"), "#", class: "btn-success btn" %>
+              <%= link_to t("download"), @document.file.url, class: "btn-success btn" %>
             <% else %>
               <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
               <%= link_to t("document.delete"),

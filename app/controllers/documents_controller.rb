@@ -19,6 +19,8 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build document_params
     if @document.save
+      current_user.update_number_upload
+      current_user.update_total_coins Settings.user.minus_total_coin
       flash[:success] = t "messages.register_success"
       redirect_to user_documents_path(current_user)
     else

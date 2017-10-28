@@ -4,11 +4,11 @@
     <div class="col-lg-6 col-md-6">
       <aside>
         <div class="img-document">
-          <%= image_tag document.image.url, class: "img-responsive"%>
+          <%= image_tag document.image.url, class: "img-list-document"%>
         </div>
         <div class="content-title">
           <div class="text-center">
-            <h3><%= document.name %></h3>
+            <h3><%= link_to document.name, user_document_path(document.owner.id, document) %></h3>
           </div>
         </div>
         <div class="content-footer">
