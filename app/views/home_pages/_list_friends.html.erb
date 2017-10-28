@@ -1,29 +1,29 @@
-<div class="col-md-12" id="firends_request">
-  <div class="page-header title-header text-uppercase" id="gallery">
-    <h4 class="text-center text-primary"><%= t "user.list_friends_invition" %></h4>
-  </div>
-  <% if !@list_friends_accept.empty? %>
-    <% @list_friends_accept.each do |member| %>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="well">
-            <%= image_tag member.user.avatar.url, class: "img-responsive"%>
-          </div>
-        </div>
-          <p class="title-name"><%= link_to member.user.name, member.user %></p>
-          <p class="email-user"><%= member.user.email %></p>
-          <%= link_to t("accept"),
-            user_friend_path(current_user.id, member),
-            method: :patch,
-            data: {confirm: t("friend.comfirm_accept_friend", name: member.user.name)},
-            class: "btn-success btn" %>
-          <%= link_to t("cancel"),
+<div class="widget-sidebar">
+  <h2 class="title-widget-sidebar">// <%= t "user.list_friends_invition" %></h2>
+    <div class="content-widget-sidebar">
+      <ul>
+       <% if @list_friends_accept %>
+        <% @list_friends_accept.each do |member| %>
+          <li class="recent-post">
+            <div class="post-img">
+              <%= image_tag member.avatar.url, class: "img-responsive"%>
+            </div>
+            <p class="title-name"><%= link_to member.name, member %></p>
+            <p class="email-user"><%= member.email %></p>
+            <%= link_to t("accept"),
               user_friend_path(current_user.id, member),
-              method: :delete,
-              data: {confirm: t("friend.comfirm_cancel_friend", name: member.user.name)},
-              class: "btn-danger btn" %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+              method: :patch,
+              data: {confirm: t("friend.comfirm_accept_friend", name: member.user.name)},
+              class: "btn-success btn" %>
+            <%= link_to t("cancel"),
+                user_friend_path(current_user.id, member),
+                  method: :delete,
+                  data: {confirm: t("friend.comfirm_cancel_friend", name: member.user.name)},
+                  class: "btn-danger btn" %>
+          </li>
+          <hr>
+        <% end %>
+      <% end %>
+      </ul>
+  </div>
 </div>
