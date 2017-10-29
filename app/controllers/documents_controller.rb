@@ -46,7 +46,7 @@ class DocumentsController < ApplicationController
   end
 
   def load_document
-    @document = Document.includes(:owner).find_by_id params[:id]
+    @document = Document.includes(:owner, :likes).find_by_id params[:id]
     return if @document
     flash[:danger] = t "document.document_not_found"
     redirect_to user_documents_path(current_user)

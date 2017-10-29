@@ -21,21 +21,20 @@
             </span>
             <span data-toggle="tooltip" data-placement="left">
               <i class="fa fa-comment" aria-hidden="true"></i>
-              <%= document.number_download %>
+              <%= document.number_of_comment %>
             </span>
-            <span data-toggle="tooltip" data-placement="left">
-              <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-              <%= document.number_download %>
+            <span data-toggle="tooltip" data-placement="left" class="<%= check_like(document, current_user)%>">
+              <%= render "documents/like", object: document %>
             </span>
           </span>
           <div class="user-ditels">
             <div class="user-img"><%= image_tag document.owner.avatar.url, class: "img-responsive"%></div>
-              <span class="user-full-ditels">
-                <h3><%= document.owner.name %></h3>
-                <p><%= document.owner.email %></p>
-              </span>
-            </div>
+            <span class="user-full-ditels">
+              <h3><%= document.owner.name %></h3>
+              <p><%= document.owner.email %></p>
+            </span>
           </div>
+        </div>
       </aside>
     </div>
   <% end %>

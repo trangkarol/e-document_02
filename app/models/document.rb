@@ -23,6 +23,19 @@ class Document < ApplicationRecord
   validates :description,
     presence: true,
     length: {minimum: Settings.document.description_length}
-  validates :image, presence: true
   validates :file, presence: true
+
+  def update_number_of_like flag
+    number_of_like = self.number_of_like
+    if flag == Settings.like.flag_like
+      number_of_like += 1
+    else
+      number_of_like -= 1
+    end
+    update_attribute :number_of_like, number_of_like
+  end
+
+  def check_like_document current_user_id
+    likes.check_like(current_user_id).empty?
+  end
 end
