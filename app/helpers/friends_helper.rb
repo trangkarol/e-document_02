@@ -1,6 +1,7 @@
 module FriendsHelper
-  def check_friend? member
-    current_user.friends.check_friend(member.id).empty?
+  def check_friend_request? member, status
+    @check = Friend.check_friend(status, member.id, current_user.id)
+    !@check.empty? 
   end
 
   def determine_friend_user member

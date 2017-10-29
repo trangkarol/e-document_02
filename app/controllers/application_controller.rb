@@ -36,4 +36,14 @@ class ApplicationController < ActionController::Base
     @list_friends_accept = Friend.friend_accept(current_user.id)
                                  .paginate(page: params[:page], per_page: Settings.paginate_number)
   end
+  def search_document
+    @result_documents = Document.search_document(params[:search])
+                                .includes(:owner)
+                                .paginate(page: params[:page], per_page: Settings.paginate_number)
+  end
+
+  def search_member
+    @result_user = User.not_current_user(current_user.id).search_user(params[:search])
+                       .paginate(page: params[:page], per_page: Settings.paginate_number)
+  end
 end

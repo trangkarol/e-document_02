@@ -1,6 +1,6 @@
 <div class="widget-sidebar" style="display: inline-block;">
   <h2 class="title-widget-sidebar">// <%= t "document.list_documents" %></h2>
-  <% @documents.each do |document| %>
+  <% object.each do |document| %>
     <div class="col-lg-6 col-md-6">
       <aside>
         <div class="img-document">
@@ -41,4 +41,3 @@
     </div>
   <% end %>
 </div>
-<%= will_paginate @documents %>

@@ -4,7 +4,7 @@
     <%= render "users/left_bar" %>
     <div class="col-md-9" id="div-show-user">
 	    <% if !@list_friends.empty? %>
-	      <%= render "friend", object: @list_friends %>
+	      <%= render "friend" %>
 	    <% else %>  
 	    	<%= render "shared/empty" %>
 	   	<% end %>

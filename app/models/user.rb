@@ -31,8 +31,8 @@ class User < ApplicationRecord
   scope :friends_request, lambda{|current_user_id, firend_ids|
     where("id NOT IN (?) AND id != ?", firend_ids, current_user_id)
   }
-
   scope :not_current_user, ->(current_user_id){where("id != ?", current_user_id)}
+  scope :search_user, ->(search){where("name like ? OR email like ?", "%#{search}%", "%#{search}%")}
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end
@@ -78,8 +78,8 @@ class User < ApplicationRecord
   end
 
   def list_friends
-    friend_ids = friends.joins(:friend).where("friends.status = ?", Settings.friend.accpet_request)
-    request_ids = request.joins(:user).where("friends.status = ?", Settings.friend.accpet_request)
+    friend_ids = friends.joins(:friend).where("friends.status = ?", Settings.friend.accept)
+    request_ids = request.joins(:user).where("friends.status = ?", Settings.friend.accept)
     friend_ids + request_ids
   end
 

@@ -35,6 +35,7 @@ en:
   add_friend: "Add friend"
   accept: "Acccept"
   cancel: "Cancel"
+  approving: "Approving"
   hello: "Hello world"
   download: "Download Now!"
   home:
@@ -67,6 +68,7 @@ en:
     list_friends_invition: "Accepting"
     user_not_found: "User not found."
     management_history_document: "Management history"
+    list_users: "List users"
   messages:
     register_success: "Register succsessfully!"
   document:
@@ -83,13 +85,8 @@ en:
     list_friends: "List friend"
     history: "History"
     please_log_in: "Plese login to system"
-  error:
-    lbl_content: "List error"
-  friend:
-    comfirm_add_friend: "Do you want add %{name} is your friend?"
-    create_fail: "You don't add friend"
+    upload_success: "Upload succsessfully!"
     messages_extension_error: "Only formats are allowed : %{name}"
-    description: "Description"
   error:
     lbl_content: "List error"
   friend:
@@ -98,6 +95,8 @@ en:
     comfirm_unfriend: "Do you want to unfriend %{name} is your friend?"
     comfirm_cancel_friend: "Do you want to cancel invition %{name} is your friend?"
     create_sucess: "You added friend succsessfully!"
+    create_fail: "You don't add friend"
+    friend_not_found: "Friend not found"
     your_friend: "Friend"
     unfriend_success: "Unfriend succsessfully."
     unfriend_fail: "Unfriend is fail."
@@ -106,7 +105,7 @@ en:
     unfriend_success: "Unfriend succsessfully."
     unfriend_fail: "Unfriend is fail."
   category:
-    name: "category"
+    name: "Category"
   comment:
     title: "Comment"
   history:

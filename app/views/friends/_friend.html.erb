@@ -1,29 +1,12 @@
 <% @list_friends.each do |member |%>
-<div class="col-md-6">
-  <div class="col-md-5">
-    <div class="well">
-      <%= image_tag member.friend.avatar.url, class: "img-responsive"%>
+  <div class="col-md-6">
+    <div class="col-md-5">
+      <div class="well">
+        <%= image_tag member.friend.avatar.url, class: "img-responsive"%>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <%= render "shared/check_friend", member: determine_friend_user(member) %>
     </div>
   </div>
-  <div class="col-md-7">
-    <h3><%= link_to member.friend.name, member.friend %></h3>
-    <p class="text-justify"><%= member.friend.email %></p>
-      <% if current_user? @user %>
-        <%= link_to t("friend.unfriend"),
-          user_friend_path(current_user.id, member),
-          method: :delete,
-          data: {confirm: t("friend.comfirm_unfriend", name: member.friend.name)},
-          class: "button-more-success btn" %>
-      <% elsif !check_friend? member.friend %>
-        <p class="button-more-success btn"><%= t "friend.your_friend" %></p>
-      <% else %>
-        <%= form_tag user_friends_path(current_user), method: :post do |f| %>
-          <%= hidden_field_tag :friend_id, member.friend.id %>
-          <%= submit_tag t("add_friend"),
-            data: {confirm: t("friend.comfirm_add_friend", name: member.friend.name)},
-            class: "btn-success btn" %>
-        <% end %>
-      <% end %>
-  </div>
-</div>
 <% end %>

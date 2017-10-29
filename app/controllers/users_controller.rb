@@ -13,6 +13,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def search
+    search_member
+    respond_to do |format|
+      format.html{head :no_content}
+      format.js
+    end
+  end
+
   private
 
   def user_params

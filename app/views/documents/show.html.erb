@@ -14,7 +14,7 @@
 
         <!-- Precios -->
         <h6 class="title-price"><small><%= t "category.name" %></small></h6>
-        <h3>U$S 399</h3>
+        <h3><%= @document.category.name %></h3>
 
         <!-- Detalles especificos del producto -->
         <div class="section">
@@ -28,7 +28,7 @@
           <% if !check_owner?(@document.owner.id) %>
             <%= link_to t("download"), @document.file.url, class: "btn-success btn" %>
           <% else %>
-            <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
+            <%= link_to t("document.edit"), edit_user_document_path(current_user.id, @document), class: "button-more-success btn" %>
             <%= link_to t("document.delete"),
                 user_document_path(@document.owner.id, @document),
                 method: :delete, data: {confirm: t("document.comfirm_delete")},

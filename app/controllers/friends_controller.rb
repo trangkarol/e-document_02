@@ -8,8 +8,8 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @firend = current_user.friends.build friend_params
-    flash[:success] = t "firend.create_success" if @firend.save
+    @friend = current_user.friends.build friend_params
+    flash[:success] = t "friend.create_success" if @friend.save
     redirect_to root_url
   end
 
@@ -20,9 +20,9 @@ class FriendsController < ApplicationController
 
   def destroy
     if @friend.destroy
-      flash[:success] = t "firend.unfriend_success"
+      flash[:success] = t "friend.unfriend_success"
     else
-      flash[:danger] = t "firend.unfriend_fail"
+      flash[:danger] = t "friend.unfriend_fail"
     end
     redirect_to user_friends_path(current_user)
   end

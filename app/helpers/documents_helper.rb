@@ -7,4 +7,8 @@ module DocumentsHelper
     return if document.check_like_document current_user.id
     "active"
   end
+
+  def list_category
+    Category.all
+  end
 end

@@ -2,6 +2,7 @@ class Document < ApplicationRecord
   has_many :likes, as: :likable
   # User create documents
   belongs_to :owner, class_name: User.name, foreign_key: :user_id
+  belongs_to :category
   # Management history download, upload of users
   has_many :histories, dependent: :destroy
   has_many :users, through: :histories
@@ -13,6 +14,7 @@ class Document < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   default_scope ->{order(created_at: :desc)}
+  scope :search_document, ->(search){where("name like ? OR description like ?", "%#{search}%", "%#{search}%")}
 
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader
@@ -24,6 +26,7 @@ class Document < ApplicationRecord
     presence: true,
     length: {minimum: Settings.document.description_length}
   # validates :file, presence: true
+  validates :category_id, presence: true
 
   def update_number_of_like flag
     number_of_like = self.number_of_like

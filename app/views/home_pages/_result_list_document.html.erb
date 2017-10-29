@@ -1,0 +1,2 @@
+<%= render "home_pages/list_documents", object: @result_documents %>
+<%= will_paginate(@result_documents, params: {:controller => "documents", :action => "search"}) %>

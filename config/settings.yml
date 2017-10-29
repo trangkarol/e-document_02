@@ -1,5 +1,6 @@
 avatar_size: 1024
 paginate_number: 4
+active: "active"
 user:
   minimum_coin: 0
   minimum_number_free: 0
@@ -22,8 +23,6 @@ friend:
   request: 0
   accept: 1
   paginate_number: 8
-friend:
-  accpet_request: 1
 like:
   flag_like: "like"
   flag_unlike: "unlike"

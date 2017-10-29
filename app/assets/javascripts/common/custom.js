@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  $("#result-documents .pagination a").attr('data-remote', 'true');
+  $('#result-users .pagination a').attr('data-remote', 'true');
   $('#file-document').bind('change', function() {
     var extensions = ["pdf", "xls"];
     var extension = $(this).val().replace(/^.*\./, '');
@@ -31,19 +33,19 @@ $(document).ready(function () {
   $(".btn-minus").on("click",function(){
     var now = $(".section > div > input").val();
     if ($.isNumeric(now)){
-        if (parseInt(now) -1 > 0){ now--;}
-        $(".section > div > input").val(now);
+      if (parseInt(now) -1 > 0){ now--;}
+      $(".section > div > input").val(now);
     }else{
-        $(".section > div > input").val("1");
+      $(".section > div > input").val("1");
     }
   });
 
   $(".btn-plus").on("click",function(){
     var now = $(".section > div > input").val();
     if ($.isNumeric(now)){
-        $(".section > div > input").val(parseInt(now)+1);
+      $(".section > div > input").val(parseInt(now)+1);
     }else{
-        $(".section > div > input").val("1");
+      $(".section > div > input").val("1");
     }
   });
 });
