@@ -24,3 +24,6 @@ friend:
   paginate_number: 8
 friend:
   accpet_request: 1
+like:
+  flag_like: "like"
+  flag_unlike: "unlike"

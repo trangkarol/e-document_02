@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post "/add_firend", to:"friends#create"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :likes
   resources :users do
     member do
       get :upload

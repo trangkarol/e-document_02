@@ -7,7 +7,10 @@ class DocumentsController < ApplicationController
     @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
   end
 
-  def show; end
+  def show
+    list_friend_request
+    list_friends_accept
+  end
 
   def new
     @document = Document.new
@@ -16,6 +19,8 @@ class DocumentsController < ApplicationController
   def create
     @document = current_user.documents.build document_params
     if @document.save
+      current_user.update_number_upload
+      current_user.update_total_coins Settings.user.minus_total_coin
       flash[:success] = t "messages.register_success"
       redirect_to user_documents_path(current_user)
     else
@@ -41,7 +46,7 @@ class DocumentsController < ApplicationController
   end
 
   def load_document
-    @document = Document.includes(:owner).find_by_id params[:id]
+    @document = Document.includes(:owner, :likes).find_by_id params[:id]
     return if @document
     flash[:danger] = t "document.document_not_found"
     redirect_to user_documents_path(current_user)

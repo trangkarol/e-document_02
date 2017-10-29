@@ -1,45 +1,44 @@
-<div class="col-md-8" id="list-documents">
-  <div class="col-md-12 destacados">
-    <div class="col-md-4">
-      <div class="box1">
-          <h4><%= t "document.list_documents" %></h4>
-      </div>
-    </div>
-  </div>
+<div class="widget-sidebar" style="display: inline-block;">
+  <h2 class="title-widget-sidebar">// <%= t "document.list_documents" %></h2>
   <% @documents.each do |document| %>
-    <div class="col-md-6 style-document">
-      <div class="row">
-        <div class="col-md-6">
-          <%= image_tag document.image.url, class: "img-responsive"%>
+    <div class="col-lg-6 col-md-6">
+      <aside>
+        <div class="img-document">
+          <%= image_tag document.image.url, class: "img-list-document"%>
         </div>
-        <div class="col-md-6">
-          <h3><%= document.name %></h3>
-          <p class="text-justify text-document"><%= document.description[0..70] %>...</p>
-          <%= link_to t("read_more"),user_document_path(document.owner.id, document), class: "btn-info btn" %>
-          <br />
-          <br />
-          <p>
-            <i class="fa fa-download" aria-hidden="true"></i>
-            <span><%= document.number_download %><%= t "document.downloaded" %></span>
-          </p>
-          <p>
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span><%= document.owner.name %></span>
-          </p>
-          <p>
-            <i class="fa fa-clock-o"></i>
-            <span><%= document.created_at %></span>
-          </p>
-          <p>
-            <i class="fa fa-comment"></i>
-            <span></span>
-          </p>
+        <div class="content-title">
+          <div class="text-center">
+            <h3><%= link_to document.name, user_document_path(document.owner.id, document) %></h3>
+          </div>
         </div>
-      </div>
+        <div class="content-footer">
+          <%= image_tag document.owner.avatar.url, class: "user-small-img"%>
+          <span style="font-size: 16px;color: #fff;"><%= document.owner.name %></span>
+          <span class="pull-right">
+            <span data-toggle="tooltip" data-placement="left">
+              <i class="fa fa-download" aria-hidden="true"></i>
+              <%= document.number_download %>
+            </span>
+            <span data-toggle="tooltip" data-placement="left">
+              <i class="fa fa-comment" aria-hidden="true"></i>
+              <%= document.number_of_comment %>
+            </span>
+            <span data-toggle="tooltip" data-placement="left" class="<%= check_like(document, current_user)%>">
+              <!-- <i class="fa fa-heart" aria-hidden="true"></i>
+              <%= document.number_of_like %> -->
+              <%= render "documents/like", object: document %>
+            </span>
+          </span>
+          <div class="user-ditels">
+            <div class="user-img"><%= image_tag document.owner.avatar.url, class: "img-responsive"%></div>
+            <span class="user-full-ditels">
+              <h3><%= document.owner.name %></h3>
+              <p><%= document.owner.email %></p>
+            </span>
+          </div>
+        </div>
+      </aside>
     </div>
   <% end %>
-  <div class="clear"></div>
-  <div class="col-md-offset-7">
-    <%= will_paginate @documents %>
-  </div>
 </div>
+<%= will_paginate @documents %>

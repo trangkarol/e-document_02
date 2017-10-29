@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # List friends
   has_many :friends, dependent: :destroy
+  has_many :request, class_name: Friend.name, foreign_key: "friend_id", dependent: :destroy
   # Management payments coins
   has_many :payments, dependent: :destroy
   has_many :coins, through: :payments
@@ -45,6 +46,10 @@ class User < ApplicationRecord
     number_upload <= Settings.user.maxnimum_number_dowload
   end
 
+  def check_download?
+    number_free? || check_coin?
+  end
+
   # Update number_upload default of user
   def update_number_upload
     return unless check_upload?
@@ -70,5 +75,11 @@ class User < ApplicationRecord
     digest = send "#{attribute}_digest"
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password? token
+  end
+
+  def list_friends
+    friend_ids = friends.joins(:friend).where("friends.status = ?", Settings.friend.accpet_request)
+    request_ids = request.joins(:user).where("friends.status = ?", Settings.friend.accpet_request)
+    friend_ids + request_ids
   end
 end

@@ -7,8 +7,9 @@ class SignUpUsersController < ApplicationController
   def create
     @user = User.new user_params
 
-    if @user.valid? && @user.save
+    if @user.save
       flash[:success] = t "messages.register_success"
+      redirect_to root_path
     else
       render :new
     end

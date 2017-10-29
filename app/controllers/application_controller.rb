@@ -20,4 +20,20 @@ class ApplicationController < ActionController::Base
     parsed_locale = params[:locale]
     I18n.available_locales.map(&:to_s).include?(parsed_locale) ? parsed_locale : nil
   end
+
+  def list_friend_request
+    friend_ids = current_user.friends.pluck(:friend_id) + current_user.request.pluck(:user_id)
+    if !friend_ids.empty?
+      @list_friend_request = User.friends_request(current_user.id, friend_ids)
+                                 .paginate(page: params[:page], per_page: Settings.paginate_number)
+    else
+      @list_friend_request = User.not_current_user(current_user.id)
+                                 .paginate(page: params[:page], per_page: Settings.paginate_number)
+    end
+  end
+
+  def list_friends_accept
+    @list_friends_accept = Friend.friend_accept(current_user.id)
+                                 .paginate(page: params[:page], per_page: Settings.paginate_number)
+  end
 end

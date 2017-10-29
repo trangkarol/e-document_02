@@ -6,7 +6,16 @@
 
   <body data-locale="<%= I18n.locale %>">
     <%= render "layouts/navbar" %>
-    <%= yield %>
+    <section id="blog-section" >
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <div class="container">
+        <div class="row">
+          <%= yield %>
+        </div>
+      </div>
+    </section>
     <%= content_for :javascript %>
   </body>
 </html>

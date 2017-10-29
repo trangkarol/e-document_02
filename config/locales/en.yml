@@ -36,6 +36,7 @@ en:
   accept: "Acccept"
   cancel: "Cancel"
   hello: "Hello world"
+  download: "Download Now!"
   home:
     title: "Home"
     placeholder_search: "Search..."
@@ -87,6 +88,7 @@ en:
     comfirm_add_friend: "Do you want add %{name} is your friend?"
     create_fail: "You don't add friend"
     messages_extension_error: "Only formats are allowed : %{name}"
+    description: "Description"
   error:
     lbl_content: "List error"
   friend:
@@ -98,3 +100,11 @@ en:
     your_friend: "Friend"
     unfriend_success: "Unfriend succsessfully."
     unfriend_fail: "Unfriend is fail."
+    create_success: "You added friend succsessfully!"
+    your_friend: "Friend"
+    unfriend_success: "Unfriend succsessfully."
+    unfriend_fail: "Unfriend is fail."
+  category:
+    name: "category"
+  comment:
+    title: "Comment"
