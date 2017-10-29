@@ -10,11 +10,26 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active" id="profile"><%= link_to t("user.profile"), @user %></li>
-        <li><%= link_to t("document.list_document"), user_documents_path(@user) %></li>
-        <li id="list_friends"><%= link_to t("user.list_friends"),user_friends_path(@user) %></li>
-        <li><%= link_to t("document.up_load_file"), new_user_document_path(current_user), id: "up_load_file" %></li>
-        <li id="buy_card"><%= link_to t("document.buy_card"), "#" %></li>
+        <li class="<%= check_current_url?(user_path(@user)) %>" id="profile">
+          <%= link_to t("user.profile"), @user %>
+        </li>
+        <li class="<%= check_current_url?(user_documents_path(@user)) %>">
+          <%= link_to t("document.list_document"), user_documents_path(@user) %>
+        </li>
+        <li class="<%= check_current_url?(user_friends_path(@user)) %>">
+          <%= link_to t("user.list_friends"),user_friends_path(@user) %>
+        </li>
+        <% if current_user? @user %>
+          <li class="<%= check_current_url?(new_user_document_path(@user)) %>">
+            <%= link_to t("document.up_load_file"), new_user_document_path(current_user), id: "up_load_file" %>
+          </li>
+          <li class="<%= check_current_url?(user_documents_path(@user)) %>">
+            <%= link_to t("document.buy_card"), "#" %>
+          </li>
+        <% end %>
+        <li class="<%= check_current_url?(user_histories_index_path(@user)) %>">
+          <%= link_to t("user.management_history_document"), user_histories_index_path(@user) %>
+        </li>
       </ul>
     </div>
   </div>

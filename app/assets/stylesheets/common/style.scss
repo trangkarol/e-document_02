@@ -580,3 +580,22 @@ span {
   border-radius: 7px;
   box-shadow: 1px 1px 1px #d8d8d8;
 }
+
+img.img-reposive-document {
+  width: 25%;
+  height: 30%;
+}
+
+.empty {
+  height: 100px;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  padding-top: 3%;
+  padding-left: 2%;
+  p {
+    font-size: 18px;
+  }
+}
+
+td.image-history {
+    width: 20%;
+}

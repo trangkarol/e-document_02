@@ -66,6 +66,7 @@ en:
     please_log_in: "Plese login to system"
     list_friends_invition: "Accepting"
     user_not_found: "User not found."
+    management_history_document: "Management history"
   messages:
     register_success: "Register succsessfully!"
   document:
@@ -108,3 +109,9 @@ en:
     name: "category"
   comment:
     title: "Comment"
+  history:
+    stt: "No."
+    name_action: "Action"
+    name_document: "Document"
+    category: "Category"
+    date: "Date"

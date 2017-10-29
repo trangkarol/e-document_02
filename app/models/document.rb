@@ -23,7 +23,7 @@ class Document < ApplicationRecord
   validates :description,
     presence: true,
     length: {minimum: Settings.document.description_length}
-  validates :file, presence: true
+  # validates :file, presence: true
 
   def update_number_of_like flag
     number_of_like = self.number_of_like

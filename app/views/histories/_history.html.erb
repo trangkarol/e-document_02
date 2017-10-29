@@ -1,0 +1,27 @@
+<div class="table-responsive"> 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center"><%= t "history.stt" %></th>
+        <th class="text-center"><%= t "document.image" %></th>
+        <th class="text-center"><%= t "history.name_document" %></th>
+        <th class="text-center"><%= t "history.size" %></th>
+        <th class="text-center"><%= t "history.name_action" %></th>
+        <th class="text-center"><%= t "history.date" %></th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @list_histories.each do |history| %>
+          <tr>
+            <td><%=  %></td>
+            <td class="image-history"><%= image_tag history.document.image.url, class: "img-responsive" %></td>
+            <td><%= link_to history.document.name, user_document_path(@user.id, history.document) %></td>
+            <td><%= history.document.file.size %></td>
+            <td><%= history.name_action %></td>
+            <td><%= history.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <%= will_paginate @list_histories %>  
+</div>
