@@ -85,13 +85,6 @@ en:
   error:
     lbl_content: "List error"
   friend:
-    comfirm_add_friend: "Do you want add %{name} is your friend?"
-    create_fail: "You don't add friend"
-    messages_extension_error: "Only formats are allowed : %{name}"
-    description: "Description"
-  error:
-    lbl_content: "List error"
-  friend:
     comfirm_add_friend: "Do you want to invite %{name} is your friend?"
     comfirm_accept_friend: "Do you want to accept %{name} is your friend?"
     comfirm_unfriend: "Do you want to unfriend %{name} is your friend?"
@@ -99,7 +92,14 @@ en:
     create_sucess: "You added friend succsessfully!"
     your_friend: "Friend"
     unfriend_success: "Unfriend succsessfully."
+    unfriend_fail: "Unfriend is fail"
+    create_success: "You added friend succsessfully!"
+    your_friend: "Friend"
+    unfriend_success: "Unfriend succsessfully."
     unfriend_fail: "Unfriend is fail."
+    create_fail: "You don't add friend"
+    messages_extension_error: "Only formats are allowed : %{name}"
+    description: "Description"
   category:
     name: "category"
   comment:

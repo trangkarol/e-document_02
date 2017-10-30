@@ -28,8 +28,8 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.user.password_length}, allow_nil: true
-  scope :friends_request, lambda{|current_user_id, firend_ids|
-    where("id NOT IN (?) AND id != ?", firend_ids, current_user_id)
+  scope :friends_request, lambda{|user_id, firend_ids|
+    where("id NOT IN (?) AND id != ?", firend_ids, user_id)
   }
 
   scope :not_current_user, ->(current_user_id){where("id != ?", current_user_id)}

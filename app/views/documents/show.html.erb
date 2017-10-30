@@ -35,6 +35,9 @@
                   class: "btn-danger btn" %>
             <% end %>
         </div>
+        <div class="session">
+          <%= render "like", object: @document %>
+        </div>
       </div>
 
       <div class="col-xs-12">
@@ -51,6 +54,6 @@
 </div>
 <div class="col-lg-4 col-md-4">
   <%= render "home_pages/list_friends_request" %>
-  <%= render "home_pages/list_friends" %>
+  <%= render "home_pages/list_friends_accpeting" %>
   <%= render "home_pages/history" %>
 </div>
