@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
 
   def list_friend_request
     friend_ids = current_user.friends.pluck(:friend_id)
-    if !friend_ids.any?
+    if friend_ids.any?
       @list_friend_request = User.friends_request(current_user.id, friend_ids)
                                  .paginate(page: params[:page], per_page: Settings.paginate_number)
     else

@@ -4,9 +4,7 @@ class FriendsController < ApplicationController
   before_action :load_friend, only: [:update, :destroy]
 
   def index
-    @list_friends = @user.friends
-                         .list_friends(@user.id)
-                         .paginate(page: params[:page], per_page: Settings.paginate_number)
+    @list_friends = @user.list_friends
   end
 
   def create
