@@ -1,25 +1,56 @@
-<div class="container-stories">
-  <div class="col-md-8">
-    <div class="page-header" id="stories">
-      <h1 class="text-primary text-center"><%= t "document.list_documents" %></h1>
-    </div>
-    <div class="col-md-6" style="margin-bottom: 10px;">
-      <div class="row">
-        <div class="col-md-6">
-          <%= image_tag @document.image.url, class: "img-responsive"%>
+<div class="col-lg-8 col-md-8">
+  <div class="widget-sidebar" style="display: inline-block;">
+    <div class="row">
+      <div class="col-xs-4 item-photo">
+        <%= image_tag @document.image.url, class: "img-responsive"%>
+      </div>
+      <div class="col-xs-5 show-detail-document">
+        <!-- Datos del vendedor y titulo del producto -->
+        <h3><%= @document.name %></h3>
+        <h5>
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <%= link_to @document.owner.name, @document.owner %>
+        </h5>
+
+        <!-- Precios -->
+        <h6 class="title-price"><small><%= t "category.name" %></small></h6>
+        <h3></h3>
+
+        <!-- Detalles especificos del producto -->
+        <div class="section">
+            <h6 class="title-attr">
+              <small><i class="fa fa-download" aria-hidden="true"></i><%= t "document.downloaded" %></small>
+            </h6>
+            <%= @document.number_download %>
         </div>
-        <div class="col-md-6">
-          <h3><%= @document.name %></h3>
-          <br />
-          <p class="text-justify"><%= @document.description %></p>
-          <br />
-          <% if !check_owner?(@document.owner.id) %>
-            <%= link_to t("download"), "#", class: "button-more-success btn" %>
-          <% else %>
-          <% end %>
-          <br />
+        <!-- Botones de compra -->
+        <div class="section section-download">
+            <% if !check_owner?(@document.owner.id) %>
+              <%= link_to t("download"), "#", class: "btn-success btn" %>
+            <% else %>
+              <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
+              <%= link_to t("document.delete"),
+                  user_document_path(@document.owner.id, @document),
+                  method: :delete, data: {confirm: t("document.comfirm_delete")},
+                  class: "btn-danger btn" %>
+            <% end %>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <ul class="menu-items">
+          <li class="active" id="description"><%= t "document.description" %></li>
+          <li id="comment"><%= t "comment.title" %></li>
+        </ul>
+        <div id="description" class="div-description">
+          <p><%= @document.description %></p>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="col-lg-4 col-md-4">
+  <%= render "home_pages/list_friends_request" %>
+  <%= render "home_pages/list_friends" %>
+  <%= render "home_pages/history" %>
 </div>

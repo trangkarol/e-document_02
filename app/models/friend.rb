@@ -1,5 +1,6 @@
 class Friend < ApplicationRecord
   belongs_to :user
+  belongs_to :friend, class_name: User.name, foreign_key: :friend_id
   scope :friend_accept, lambda{|current_user_id|
     joins(:user).where("friends.status = ?", Settings.friend.request).where("friends.friend_id = ?", current_user_id)
   }

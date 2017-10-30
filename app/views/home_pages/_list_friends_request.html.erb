@@ -1,26 +1,25 @@
-<div class="col-md-12" id="firends_request">
-  <div class="page-header title-header text-uppercase" id="gallery">
-    <h4 class="text-center text-primary"><%= t "user.firends_request" %></h4>
+<div class="widget-sidebar">
+  <h2 class="title-widget-sidebar">// <%= t "user.firends_request" %></h2>
+    <div class="content-widget-sidebar">
+      <ul>
+       <% if @list_friend_request %>
+        <% @list_friend_request.each do |member| %>
+          <li class="recent-post">
+            <div class="post-img">
+              <%= image_tag member.avatar.url, class: "img-responsive"%>
+            </div>
+            <%= form_tag user_friends_path(current_user), method: :post do |f| %>
+              <p class="title-name"><%= link_to member.name, member %></p>
+              <p class="email-user"><%= member.email %></p>
+              <%= hidden_field_tag :friend_id, member.id %>
+              <%= submit_tag t("add_friend"),
+                data: {confirm: t("friend.comfirm_add_friend", name: member.name)},
+                class: "button-more-success btn" %>
+            <% end %>
+          </li>
+          <hr>
+        <% end %>
+      <% end %>
+      </ul>
   </div>
-  <% if @list_friend_request %>
-    <% @list_friend_request.each do |member| %>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="well">
-            <%= image_tag member.avatar.url, class: "img-responsive"%>
-          </div>
-        </div>
-        <div class="col-md-8">
-          <%= form_tag user_friends_path(current_user), method: :post do |f| %>
-            <p class="title-name"><%= link_to member.name, member %></p>
-            <p class="email-user"><%= member.email %></p>
-            <%= hidden_field_tag :friend_id, member.id %>
-            <%= submit_tag t("add_friend"),
-              data: {confirm: t("friend.comfirm_add_friend", name: member.name)},
-              class: "btn-success btn" %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
 </div>

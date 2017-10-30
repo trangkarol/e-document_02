@@ -7,7 +7,10 @@ class DocumentsController < ApplicationController
     @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
   end
 
-  def show; end
+  def show
+    list_friend_request
+    list_friends_accept
+  end
 
   def new
     @document = Document.new
