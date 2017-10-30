@@ -1,0 +1,9 @@
+<div class="media comment-box">
+  <div class="media-left">
+    <%= link_to image_tag(comment.user.avatar.url, class: "img-responsive user-photo"), comment.user %>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= comment.user.name %></h4>
+    <p><%= comment.content %></p>
+  </div>
+</div>

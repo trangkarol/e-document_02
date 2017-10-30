@@ -1,5 +1,20 @@
 <div class="widget-sidebar">
   <h2 class="title-widget-sidebar">// <%= t "user.history" %></h2>
   <div class="content-widget-sidebar">
+    <ul>
+      <% if @list_document_history %>
+        <% @list_document_history.each do |document| %>
+          <li class="recent-post">
+            <div class="post-img">
+              <%= image_tag document.image.url, class: "img-responsive"%>
+            </div>
+              <p class="title-name"><%= link_to document.name, user_document_path(document.owner.id, document) %></p>
+              <p class="email-user"><%= document.category.name %></p>
+              <p class="email-user"><%= document.owner.name %></p>
+          </li>
+          <hr>
+        <% end %>
+      <% end %>
+      </ul>
   </div>
 </div>

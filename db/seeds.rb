@@ -17,7 +17,7 @@ User.create!(
   password_confirmation: "123123",
   status: 1,
   role: 0,
-  total_coin: 50,
+  total_coin: 400,
   number_free: 3,
   number_upload: 0
 )
@@ -53,7 +53,7 @@ users.each do |user|
     document = user.documents.create!(
       name: Faker::Name.name,
       number_download: 0,
-      file: Faker::File.file_name("public/upload", "dokkai1", "pdf"),
+      file: File.open('./app/assets/images/default.pdf'),
       description: Faker::Lorem.sentence(10),
       size: 1000,
       status: random.rand(0..2),
@@ -71,11 +71,16 @@ cost_default = 0
 
 users.each do |user|
   number_coins_default += 50
-  cost_default += 20.000
+  cost_default += 20000.000
   # create coins
   coin = Coin.create! number_coins: number_coins_default, cost: cost_default
   # create payments
-  payment = user.payments.create! number: random.rand(1..3), coin_id: coin.id
+  payment = user.payments.create!(
+    number: random.rand(1..3),
+    coin_id: coin.id,
+    status: rand(0..2),
+    payment_date_estimate: DateTime.now,
+  )
   user.update_total_coins payment.number * coin.number_coins
 end
 

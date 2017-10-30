@@ -1,6 +1,11 @@
 $(document).ready(function () {
   $("#result-documents .pagination a").attr('data-remote', 'true');
   $('#result-users .pagination a').attr('data-remote', 'true');
+  $("#name-description").click(function () {
+    $("#comment").hide();
+    $("#description").show();
+  });
+
   $('#file-document').bind('change', function() {
     var extensions = ["pdf", "xls"];
     var extension = $(this).val().replace(/^.*\./, '');

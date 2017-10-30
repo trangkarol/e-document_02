@@ -10,21 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029014156) do
+ActiveRecord::Schema.define(version: 20171031020416) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "category_documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "category_id"
-    t.bigint "document_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_documents_on_category_id"
-    t.index ["document_id"], name: "index_category_documents_on_document_id"
   end
 
   create_table "coins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -58,6 +49,7 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.string "description"
     t.integer "number_of_like", default: 0
     t.integer "number_of_comment", default: 0
+    t.string "content_type"
     t.index ["category_id"], name: "index_documents_on_category_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
@@ -108,6 +100,9 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.date "payment_date_estimate"
+    t.date "payment_date_present"
     t.index ["coin_id"], name: "index_payments_on_coin_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
@@ -129,8 +124,6 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "category_documents", "categories"
-  add_foreign_key "category_documents", "documents"
   add_foreign_key "comments", "documents"
   add_foreign_key "comments", "users"
   add_foreign_key "documents", "categories"

@@ -1,0 +1,9 @@
+<div class="div-comment">
+  <% if @list_comment.any? %>
+    <% @list_comment.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+    <% end %>
+  <% end %>
+  <%= render "comments/form_comment" %>
+  <%= will_paginate @list_comment %>
+</div>

@@ -1,15 +1,18 @@
 class DocumentsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create, :destroy, :edit]
-  before_action :load_document, only: [:show, :destroy, :edit]
+  before_action :logged_in_user, only: [:new, :create, :destroy, :edit, :download]
+  before_action :load_document, only: [:show, :destroy, :edit, :download]
   before_action :load_user_url, only: [:new, :create, :index, :destroy]
   before_action :list_friend_request, only: [:show, :edit, :update]
   before_action :list_friends_accept, only: [:show, :edit, :update]
+  before_action :list_document_history, only: [:show, :edit, :update]
 
   def index
     @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
   end
 
-  def show; end
+  def show
+    session_history @document
+  end
 
   def edit; end
 
@@ -50,6 +53,21 @@ class DocumentsController < ApplicationController
     redirect_to user_documents_path(current_user)
   end
 
+  def download
+    if check_download_user?
+      current_user.update_number_download
+      @document.update_number_download
+      create_history Settings.history.action_download
+      send_file @document.file.path,
+        filename: @document.file.file.filename
+
+      flash[:success] = t "document.download_success"
+    else
+      flash[:danger] = t "document.download_fail"
+      redirect_to user_document_path(@document.owner.id, @document)
+    end
+  end
+
   private
 
   def document_params
@@ -57,6 +75,7 @@ class DocumentsController < ApplicationController
   end
 
   def load_document
+    params[:id] ||= params[:format]
     @document = Document.includes(:owner, :likes, :category).find_by_id params[:id]
     return if @document
     flash[:danger] = t "document.document_not_found"

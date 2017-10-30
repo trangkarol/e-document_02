@@ -29,3 +29,8 @@ like:
 history:
   action_upload: "upload"
   action_download: "download"
+payment:
+  not_pay: "No Pay"
+  pay: "Pay"
+  cancel: "Cancel"
+  staus_no_pay: 0

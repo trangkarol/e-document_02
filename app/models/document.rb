@@ -25,8 +25,10 @@ class Document < ApplicationRecord
   validates :description,
     presence: true,
     length: {minimum: Settings.document.description_length}
-  # validates :file, presence: true
+  validates :file, presence: true
   validates :category_id, presence: true
+
+  before_save :update_asset_attributes
 
   def update_number_of_like flag
     number_of_like = self.number_of_like
@@ -40,5 +42,22 @@ class Document < ApplicationRecord
 
   def check_like_document current_user_id
     likes.check_like(current_user_id).empty?
+  end
+
+  def update_number_download
+    self.number_download += 1
+    update_attribute :number_download, self.number_download
+  end
+
+  def update_number_of_comment
+    update_attribute :number_of_comment, self.number_of_comment += 1
+  end
+
+  private
+
+  def update_asset_attributes
+    if file.present? && file_changed?
+      self.content_type = file.file.content_type
+    end
   end
 end

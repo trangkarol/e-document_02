@@ -2,6 +2,7 @@ module SessionsHelper
   # Set session for user
   def log_in user
     session[:user_id] = user.id
+    session[:history] = []
   end
 
   # Current user
@@ -30,6 +31,7 @@ module SessionsHelper
   def log_out
     forget current_user
     session.delete :user_id
+    session.delete :history
     @current_user = nil
   end
 

@@ -1,0 +1,4 @@
+$("#comment").html("<%= escape_javascript(render 'comments/list_comments') %>");
+$("#description").hide();
+$("#comment").show();
+$(".div-comment .pagination a").attr('data-remote', 'true');

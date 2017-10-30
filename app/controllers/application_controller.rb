@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
   before_action :set_locale
   include UsersHelper
   include SessionsHelper
@@ -45,5 +45,12 @@ class ApplicationController < ActionController::Base
   def search_member
     @result_user = User.not_current_user(current_user.id).search_user(params[:search])
                        .paginate(page: params[:page], per_page: Settings.paginate_number)
+  end
+
+  def list_document_history
+    @list_document_history = []
+    if session[:history].any?
+      @list_document_history = Document.where("id IN (?)", session[:history]).paginate(page: params[:page], per_page: Settings.paginate_number)
+    end
   end
 end
