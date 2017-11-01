@@ -1,5 +1,5 @@
 class HomePagesController < ApplicationController
-  before_action :logged_in_user, only: [:index]
+  before_action :authenticate_user!
   before_action :list_friend_request, only: [:index, :search]
   before_action :list_friends_accept, only: [:index, :search]
   before_action :list_document_history, only: [:index, :search]

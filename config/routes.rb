@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    passwords: 'users/passwords'
+  }
+
+  devise_scope :user do
+    post 'sign_up', to: 'users/sessions#create'
+  end
   root "home_pages#index"
-  get "/login", to: "sessions#new"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
-  get "/signup", to: "sign_up_users#new"
-  post "/signup", to: "sign_up_users#create"
   post "/add_firend", to:"friends#create"
   get "home_pages/search"
   get "documents/search"

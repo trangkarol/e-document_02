@@ -11,19 +11,19 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><%= link_to t("home.title"), root_path, class: "smooth-scroll" %></li>
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <li><%= link_to t("coin.buy_coin"), user_payments_new_path(current_user) %></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <%= render "layouts/form_search" %>
-        <% if logged_in? %>
-          <li><%= link_to image_tag(current_user.avatar.url, class: "img-avatar"), current_user %></li>
-          <li><%= link_to current_user.name, current_user %></li>
-          <li><%= link_to t("user.logout"), logout_path, method: :delete %></li>
+        <% if user_signed_in? %>
+           <li><%= link_to image_tag(current_user.avatar.url, class: "img-avatar"), current_user %></li>
+          <li><%= link_to current_user.name, edit_user_registration_path %></li>
+          <li><%= link_to t("user.logout"), destroy_user_session_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to t("user.login"), login_path %></li>
-          <li><%= link_to t("user.sign_up"), signup_path %></li>
+          <li><%= link_to t("user.login"), new_user_session_path %></li>
+          <li><%= link_to t("user.sign_up"), new_user_registration_path %></li>
         <% end %>
       </ul>
     </div>

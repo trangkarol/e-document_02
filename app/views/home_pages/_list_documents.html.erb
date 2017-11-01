@@ -24,8 +24,6 @@
               <%= document.number_of_comment %>
             </span>
             <span data-toggle="tooltip" data-placement="left" class="<%= check_like(document, current_user)%>">
-              <!-- <i class="fa fa-heart" aria-hidden="true"></i>
-              <%= document.number_of_like %> -->
               <%= render "documents/like", object: document %>
             </span>
           </span>

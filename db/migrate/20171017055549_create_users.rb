@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.datetime :birthday
       t.string :address
       t.string :phone
-      t.string :password_digest
+      # t.string :password_digest
       t.boolean :status, default: 0
       t.string :avatar
       t.boolean :role, default: 1

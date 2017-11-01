@@ -1,0 +1,46 @@
+<% provide :title, t("user.login") %>
+<div id="login-page" class="row">
+  <div class="col s12 z-depth-6 card-panel">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="row">
+        <div class="input-field col s12 center">
+          <h4 class="btn btn-regiter"><%= t "user.login" %></h4>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-social-person-outline prefix"></i>
+          <%= f.email_field :email, class: "validate", id: "email" %>
+          <%= f.label :email, t("user.email"), class: "center-align" %>
+        </div>
+      </div>
+      <div class="row margin">
+        <div class="input-field col s12">
+          <i class="mdi-action-lock-outline prefix"></i>
+          <%= f.password_field :password, id: "password" %>
+          <%= f.label :password, t("user.password") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m12 l12  login-text">
+          <%= f.check_box :remember_me, id: "remember-me" %>
+          <%= f.label :remember_me, t("user.remember_me") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 center">
+          <%= f.submit t("user.btn_login"), class: "btn btn-regiter" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><%= link_to t("user.btn_create"), new_user_registration_path %></p>
+        </div>
+        <div class="input-field col s6 m6 l6">
+            <p class="margin right-align medium-small"><%= link_to t("user.forgot_password"), new_user_password_path %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

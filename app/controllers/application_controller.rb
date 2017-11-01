@@ -2,14 +2,22 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :set_locale
   include UsersHelper
-  include SessionsHelper
+  # include SessionsHelper
 
   private
 
+  protected
+
+  def configure_permitted_parameters
+    added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  end
+
   def logged_in_user
-    return if logged_in?
+    return if user_signed_in?
     flash[:danger] = t "user.please_log_in"
-    redirect_to login_url
+    redirect_to new_user_session_path
   end
 
   def set_locale

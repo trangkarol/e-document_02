@@ -13,6 +13,7 @@ gem "bxslider-rails"
 gem "bcrypt"
 gem "carrierwave", "~> 1.0"
 gem "config"
+gem "devise"
 gem "file_validators"
 gem "font-awesome-rails"
 # I18n
