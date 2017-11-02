@@ -37,6 +37,7 @@ en:
   cancel: "Cancel"
   hello: "Hello world"
   download: "Download Now!"
+  empty: "No dat to show at here/"
   home:
     title: "Home"
     placeholder_search: "Search..."
@@ -66,6 +67,7 @@ en:
     please_log_in: "Plese login to system"
     list_friends_invition: "Accepting"
     user_not_found: "User not found."
+    management_history_document: "Management history"
   messages:
     register_success: "Register succsessfully!"
   document:
@@ -100,7 +102,17 @@ en:
     create_fail: "You don't add friend"
     messages_extension_error: "Only formats are allowed : %{name}"
     description: "Description"
+    create_success: "You added friend succsessfully!"
+    your_friend: "Friend"
+    unfriend_success: "Unfriend succsessfully."
+    unfriend_fail: "Unfriend is fail."
   category:
     name: "category"
   comment:
     title: "Comment"
+  history:
+    stt: "No."
+    name_action: "Action"
+    name_document: "Document"
+    category: "Category"
+    date: "Date"

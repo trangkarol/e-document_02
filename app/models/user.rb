@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :likes, as: :likable, dependent: :destroy
   # Manegement history download, upload document of user
   has_many :histories, dependent: :destroy
-  has_many :histories_documents, through: :histories, source: :documents
+  has_one :histories_documents, through: :histories, source: :documents
   # User comment document
   has_many :comments, dependent: :destroy
   has_many :comment_documents, through: :comments, source: :documents
@@ -81,5 +81,9 @@ class User < ApplicationRecord
     friend_ids = friends.joins(:friend).status_request
     request_ids = request.joins(:user).status_request
     friend_ids + request_ids
+  end
+
+  def list_history_docuement
+    histories.list_histories
   end
 end

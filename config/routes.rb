@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :upload
       post :upload
     end
+    get "histories/index"
     resources :documents
     resources :friends
   end

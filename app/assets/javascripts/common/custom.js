@@ -14,7 +14,6 @@ $(document).ready(function () {
       alert(I18n.t("document.messages_extension_error", {name: extensions.join(', ')}));
     }
   });
-
   //-- Click on detail
   $("ul.menu-items > li").on("click",function(){
     $("ul.menu-items > li").removeClass("active");
@@ -42,9 +41,9 @@ $(document).ready(function () {
   $(".btn-plus").on("click",function(){
     var now = $(".section > div > input").val();
     if ($.isNumeric(now)){
-        $(".section > div > input").val(parseInt(now)+1);
+      $(".section > div > input").val(parseInt(now)+1);
     }else{
-        $(".section > div > input").val("1");
+      $(".section > div > input").val("1");
     }
   });
 });

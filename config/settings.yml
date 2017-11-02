@@ -28,3 +28,6 @@ friend:
 like:
   flag_like: "like"
   flag_unlike: "unlike"
+history:
+  action_upload: "upload"
+  action_download: "download"

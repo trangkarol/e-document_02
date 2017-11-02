@@ -14,26 +14,27 @@
 
         <!-- Precios -->
         <h6 class="title-price"><small><%= t "category.name" %></small></h6>
+
         <h3></h3>
 
         <!-- Detalles especificos del producto -->
         <div class="section">
-            <h6 class="title-attr">
-              <small><i class="fa fa-download" aria-hidden="true"></i><%= t "document.downloaded" %></small>
-            </h6>
-            <%= @document.number_download %>
+          <h6 class="title-attr">
+            <small><i class="fa fa-download" aria-hidden="true"></i><%= t "document.downloaded" %></small>
+          </h6>
+          <%= @document.number_download %>
         </div>
         <!-- Botones de compra -->
         <div class="section section-download">
-            <% if !check_owner?(@document.owner.id) %>
-              <%= link_to t("download"), @document.file.url, class: "btn-success btn" %>
-            <% else %>
-              <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
-              <%= link_to t("document.delete"),
-                  user_document_path(@document.owner.id, @document),
-                  method: :delete, data: {confirm: t("document.comfirm_delete")},
-                  class: "btn-danger btn" %>
-            <% end %>
+          <% if !check_owner?(@document.owner.id) %>
+            <%= link_to t("download"), @document.file.url, class: "btn-success btn" %>
+          <% else %>
+            <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
+            <%= link_to t("document.delete"),
+                user_document_path(@document.owner.id, @document),
+                method: :delete, data: {confirm: t("document.comfirm_delete")},
+                class: "btn-danger btn" %>
+          <% end %>
         </div>
         <div class="session">
           <%= render "like", object: @document %>

@@ -21,6 +21,7 @@ class DocumentsController < ApplicationController
     if @document.save
       current_user.update_number_upload
       current_user.update_total_coins Settings.user.minus_total_coin
+      create_history Settings.history.action_upload
       flash[:success] = t "messages.register_success"
       redirect_to user_documents_path(current_user)
     else
@@ -50,5 +51,13 @@ class DocumentsController < ApplicationController
     return if @document
     flash[:danger] = t "document.document_not_found"
     redirect_to user_documents_path(current_user)
+  end
+
+  def create_history name_action
+    history = current_user.histories.build ({document_id: @document.id, name_action: name_action})
+    unless history.save
+      flash[:danger] = t "document.delete_fail"
+      redirect_to user_documents_path(current_user)
+    end
   end
 end

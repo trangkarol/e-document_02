@@ -627,6 +627,7 @@ div.section > div > input {
     }
 }
 
+
 .div-description {
   border: 1px solid #f8f8f8;
   box-shadow: 1px 1px 1px 1px #d8d8d8;
@@ -645,6 +646,69 @@ div.section > div > input {
   }
   h3 {
     margin-top: 0px;
+  }
+  .section {
+    h6 {
+      margin-top: 15px;
+    }
+  }
+  .section-download {
+    padding-bottom: 20px;
+    button {
+      i {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.div-show-document {
+  margin-top: 10px;
+}
+
+.img-document {
+  width: 100%;
+  height: 224px;
+}
+
+div#div-show-user {
+  background: #fff;
+  padding: 1%;
+  width: 100%;
+  padding-top: 2%;
+  margin-top: -16px;
+}
+
+.img-list-document {
+  width: 100%;
+  height: 100%;
+}
+
+.session {
+  form {
+    .like-document {
+      border: 0px;
+      background: #fff;
+      width: 4%;
+      margin-right: 3%;
+    }
+  }
+}
+
+
+.active i {
+  color: red;
+}
+
+span {
+  form {
+    float: right;
+    .like-document {
+      border: 0px;
+      background: #16A085;
+      width: 4%;
+      padding-right: 36%;
+    }
   }
   .section {
     h6 {
@@ -827,4 +891,23 @@ div#div-show-user {
   padding: 1%;
   border-radius: 7px;
   box-shadow: 1px 1px 1px #d8d8d8;
+}
+
+img.img-reposive-document {
+  width: 25%;
+  height: 30%;
+}
+
+.empty {
+  height: 100px;
+  box-shadow: 1px 1px 1px 1px #ccc;
+  padding-top: 3%;
+  padding-left: 2%;
+  p {
+    font-size: 18px;
+  }
+}
+
+td.image-history {
+  width: 20%;
 }
