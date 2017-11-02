@@ -1,0 +1,17 @@
+<div class="widget-sidebar" style="display: inline-block;">
+  <h2 class="title-widget-sidebar">// <%= t "user.list_users" %></h2>
+    <% if @result_user.any? %>
+      <% @result_user.each do |member| %>
+        <div class="col-lg-6 col-md-6">
+          <div class="recent-post">
+            <div class="post-img">
+              <%= image_tag member.avatar.url, class: "img-responsive"%>
+            </div>
+            <%= render "shared/check_friend", member: member %>
+          </div>
+          <hr>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+<%= will_paginate @result_user %>
