@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   post "coins/number_coins"
   get "comments/index/:document_id", to:"comments#index", :as => "comment"
   post "comments/create", to:"comments#create", :as => "comment_create"
+  get "documents/statictis/:document_id", to:"documents#statictis", :as => "list_statictis"
+  get "likes/index/:document_id", to:"likes#index", :as => "list_members_liked"
   match "documents/download/:id" => "documents#download",via: [:get, :post], :as => "download"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :likes

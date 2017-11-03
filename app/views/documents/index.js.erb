@@ -1,0 +1,5 @@
+<% if @list_document.any? %>
+  $("#div-show-user").html("<%= escape_javascript(render 'documents/document', object: @list_document) %>");
+<% else %>
+  $("#div-show-user").html("<%= escape_javascript(render 'shared/empty') %>");
+<% end %>

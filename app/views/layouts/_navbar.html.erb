@@ -6,20 +6,30 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><img src="https://lh3.googleusercontent.com/-N4NB2F966TU/WM7V1KYusRI/AAAAAAAADtA/fPvGVNzOkCo7ZMqLI6pPITE9ZF7NONmawCJoC/w185-h40-p-rw/logo.png"></a>
+      <a class="navbar-brand" href="#">
+        <img src="https://lh3.googleusercontent.com/-N4NB2F966TU/WM7V1KYusRI/AAAAAAAADtA/fPvGVNzOkCo7ZMqLI6pPITE9ZF7NONmawCJoC/w185-h40-p-rw/logo.png"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to t("home.title"), root_path, class: "smooth-scroll" %></li>
+        <li class="<%= check_current_url?(root_path) %>">
+          <%= link_to t("home.title"), root_path, class: "smooth-scroll" %>
+        </li>
         <% if user_signed_in? %>
-          <li><%= link_to t("coin.buy_coin"), user_payments_new_path(current_user) %></li>
+          <li class="<%= check_current_url?(user_payments_new_path(current_user)) %>">
+            <%= link_to t("coin.buy_coin"), user_payments_new_path(current_user) %>
+          </li>
+          <li class="<%= check_current_url?(new_user_document_path(current_user)) %>">
+            <%= link_to t("document.up_load_file"), new_user_document_path(current_user) %>
+          </li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <%= render "layouts/form_search" %>
         <% if user_signed_in? %>
-           <li><%= link_to image_tag(current_user.avatar.url, class: "img-avatar"), current_user %></li>
-          <li><%= link_to current_user.name, edit_user_registration_path %></li>
+          <li><%= link_to image_tag(current_user.avatar.url, class: "img-avatar"), current_user %></li>
+          <li class="<%= check_current_url?(edit_user_registration_path) %>">
+            <%= link_to current_user.name, edit_user_registration_path %>
+          </li>
           <li><%= link_to t("user.logout"), destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to t("user.login"), new_user_session_path %></li>

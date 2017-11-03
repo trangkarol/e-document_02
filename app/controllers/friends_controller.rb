@@ -1,10 +1,14 @@
 class FriendsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :load_user_url, only: [:create, :update, :index]
   before_action :load_friend, only: [:update, :destroy]
 
   def index
     @list_friends = @user.list_friends
+    respond_to do |format|
+      format.html{head :no_content}
+      format.js
+    end
   end
 
   def create

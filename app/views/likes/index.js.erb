@@ -1,0 +1,5 @@
+<% if @list_user_liked.any? %>
+  $("#div-like-user").html("<%= escape_javascript(render 'likes/list_member', object: @list_user_liked) %>");
+<% else %>
+  $("#div-like-user").html("<%= escape_javascript(render 'shared/empty') %>");
+<% end %>

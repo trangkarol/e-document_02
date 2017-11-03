@@ -1,0 +1,23 @@
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center"><%= t "history.stt" %></th>
+        <th class="text-center"><%= t "user.avatar" %></th>
+        <th class="text-center"><%= t "user.name" %></th>
+        <th class="text-center"><%= t "static.number" %></th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @list_statics.each_with_index do |history, index| %>
+          <tr>
+            <td class="text-center"><%= index + 1 %></td>
+            <td class="image-history"><%= image_tag history.document.image.url, class: "img-responsive" %></td>
+            <td><%= link_to history.document.name, user_document_path(@user.id, history.document) %></td>
+            <td><%= history.document.file.size %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <%= will_paginate @list_statics %>
+</div>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:update, :edit, :show]
+  before_action :authenticate_user!, only: [:update, :edit, :show]
   before_action :load_user, only: [:update, :edit, :show, :document]
 
   def show; end

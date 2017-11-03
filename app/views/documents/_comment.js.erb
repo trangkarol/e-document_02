@@ -10,8 +10,8 @@ $(document).ready(function () {
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         dataType: 'json',
         data: {
-            content: content,
-            document_id: <%= @document.id %>,
+          content: content,
+          document_id: <%= @document.id %>,
         },
         success:function(data) {
           if (data.status) {
@@ -21,5 +21,22 @@ $(document).ready(function () {
         }
     });
     }
+  });
+
+  $(document).on("click", "#list-liked", function (e) {
+    // $("#squarespaceModal").show();
+      $.ajax({
+        type: 'GET',
+        url: "<%= list_members_liked_path @document.id %>",
+        beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+        dataType: 'json',
+        success:function(data) {
+          $("#div-like-user").html(data.html)
+          // if (data.status) {
+          //   // $("#form_comment").prepend(data.html);
+          //   // $(".commet-form").prop("value", "");
+          // }
+        }
+    });
   });
 });

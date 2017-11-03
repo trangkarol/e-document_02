@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :load_user_url, only: [:index, :new]
-  before_action :logged_in_user, only: [:index, :new, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :destroy]
   before_action :list_friend_request, only: [:index, :new, :create]
   before_action :list_friends_accept, only: [:index, :new, :create]
   before_action :list_document_history, only: [:index, :new, :create]
@@ -8,6 +8,10 @@ class PaymentsController < ApplicationController
 
   def index
     list_payments
+    respond_to do |format|
+      format.html{head :no_content}
+      format.js
+    end
   end
 
   def new

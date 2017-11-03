@@ -44,11 +44,14 @@
         <ul class="menu-items">
           <li class="active" id="name-description"><%= t "document.description" %></li>
           <li><%= link_to t("comment.title"), comment_path(@document.id), remote: true %></li>
+          <li><%= link_to t("statistic.title"), list_statictis_path(@document.id), remote: true %></li>
         </ul>
         <div id="description" class="div-description">
           <p><%= @document.description %></p>
         </div>
         <div id="comment" class="div-description" style="display:none;">
+        </div>
+        <div id="statistic" class="div-description" style="display:none;">
         </div>
       </div>
     </div>

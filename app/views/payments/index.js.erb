@@ -1,0 +1,5 @@
+<% if @payments.any? %>
+  $("#div-show-user").html("<%= escape_javascript(render 'payments/payment', object: @payments) %>");
+<% else %>
+  $("#div-show-user").html("<%= escape_javascript(render 'shared/empty') %>");
+<% end %>

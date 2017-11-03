@@ -1,0 +1,14 @@
+<ul class="list-like-user">
+  <% @list_user_liked.each do |like| %>
+    <li>
+      <div class="col-md-2">
+        <%= link_to image_tag(like.user.avatar.url, class: "img-avatar"), like.user %>
+      </div>
+      <div class="col-md-8">
+        <p><%= link_to like.user.name, like.user %></p>
+        <p><%= like.user.email %></p>
+      </div>
+      <div class="clear"></div>
+    </li>
+  <% end %>
+</ul>

@@ -92,6 +92,7 @@ en:
     messages_extension_error: "Only formats are allowed : %{name}"
     download_fail: "You can't download this file."
     download_success: "Download succsessfully."
+    new: "New document"
   error:
     lbl_content: "List error"
   friend:
@@ -131,3 +132,11 @@ en:
     delete_suceess: "Delete succsessfully."
     delete_fail: "Delete fail."
     comfirm_delete: "Do you want delete this coin?"
+  statistic:
+    title: "Statistic"
+  like:
+    you_like: "You"
+    liked: "liked."
+    and_more: " and mored "
+    and: " and "
+    list_member: "List member liked"
