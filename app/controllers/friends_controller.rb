@@ -1,6 +1,6 @@
 class FriendsController < ApplicationController
   before_action :logged_in_user, only: [:create, :update, :destroy]
-  before_action :load_user_url, only: [:create, :update, :index]
+  before_action :load_user_url, except: [:new, :update]
   before_action :load_friend, only: [:update, :destroy]
 
   def index
@@ -8,8 +8,12 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @firend = current_user.friends.build friend_params
-    flash[:success] = t "firend.create_success" if @firend.save
+    @friend = current_user.friends.build friend_params
+    if @friend.save
+      flash[:success] = t "friend.create_success"
+    else
+      flash[:danger] = t "friend.create_fail"
+    end
     redirect_to root_url
   end
 
@@ -20,9 +24,9 @@ class FriendsController < ApplicationController
 
   def destroy
     if @friend.destroy
-      flash[:success] = t "firend.unfriend_success"
+      flash[:success] = t "friend.unfriend_success"
     else
-      flash[:danger] = t "firend.unfriend_fail"
+      flash[:danger] = t "friend.unfriend_fail"
     end
     redirect_to user_friends_path(current_user)
   end

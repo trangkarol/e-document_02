@@ -84,6 +84,7 @@ en:
     list_friends: "List friend"
     history: "History"
     please_log_in: "Plese login to system"
+    select_one: "Select one"
   error:
     lbl_content: "List error"
   friend:

@@ -1,25 +1,31 @@
-<div class="col-md-12 document-index">
-  <div class="col-md-3">
-    <%= image_tag document.image.url, class: "img-responsive" %>
+<% object.each do |document| %>
+  <div class="col-md-12 document-index">
+    <div class="col-md-3">
+      <%= image_tag document.image.url, class: "img-responsive" %>
+    </div>
+    <div class="col-md-9">
+      <h3><%= document.name %></h3>
+      <p class="text-justify text-document"><%= document.description[0..100] %>...</p>
+      <% if check_owner?(document.owner.id) %>
+        <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
+        <%= link_to t("document.delete"),
+          user_document_path(document.owner.id, document),
+          method: :delete, data: {confirm: t("document.comfirm_delete")},
+          class: "btn-danger btn" %>
+      <% end %>
+      <%= link_to t("read_more"), user_document_path(document.owner.id, document), class: "btn-info btn" %>
+      <p>
+        <i class="fa fa-download" aria-hidden="true"></i>
+        <span><%= document.number_download %><%= t "document.downloaded" %></span>
+      </p>
+      <p>
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <span><%= document.owner.name %></span>
+      </p>
+    </div>
   </div>
-  <div class="col-md-9">
-    <h3><%= document.name %></h3>
-    <p class="text-justify text-document"><%= document.description[0..100] %>...</p>
-    <% if check_owner?(document.owner.id) %>
-      <%= link_to t("document.edit"), "#", class: "button-more-success btn" %>
-      <%= link_to t("document.delete"),
-        user_document_path(document.owner.id, document),
-        method: :delete, data: {confirm: t("document.comfirm_delete")},
-        class: "btn-danger btn" %>
-    <% end %>
-    <%= link_to t("read_more"), user_document_path(document.owner.id, document), class: "btn-info btn" %>
-    <p>
-      <i class="fa fa-download" aria-hidden="true"></i>
-      <span><%= document.number_download %><%= t "document.downloaded" %></span>
-    </p>
-    <p>
-      <i class="fa fa-user" aria-hidden="true"></i>
-      <span><%= document.owner.name %></span>
-    </p>
-  </div>
+<% end %>
+<div class="clear"></div>
+<div class="col-md-offset-7">
+  <%= will_paginate object %>
 </div>
