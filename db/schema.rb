@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101012855) do
+ActiveRecord::Schema.define(version: 20171103091341) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20171101012855) do
     t.string "name_action"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number", default: 1
     t.index ["document_id"], name: "index_histories_on_document_id"
     t.index ["user_id"], name: "index_histories_on_user_id"
   end

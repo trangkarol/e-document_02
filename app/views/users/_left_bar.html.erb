@@ -14,21 +14,18 @@
           <%= link_to t("user.profile"), @user %>
         </li>
         <li class="<%= check_current_url?(user_documents_path(@user)) %>">
-          <%= link_to t("document.list_document"), user_documents_path(@user) %>
+          <%= link_to t("document.list_document"), user_documents_path(@user), remote: true  %>
         </li>
         <li class="<%= check_current_url?(user_friends_path(@user)) %>">
-          <%= link_to t("user.list_friends"),user_friends_path(@user) %>
+          <%= link_to t("user.list_friends"),user_friends_path(@user), remote: true %>
         </li>
         <% if current_user? @user %>
-          <li class="<%= check_current_url?(new_user_document_path(@user)) %>">
-            <%= link_to t("document.up_load_file"), new_user_document_path(current_user), id: "up_load_file" %>
-          </li>
           <li class="<%= check_current_url?(user_payments_index_path(current_user)) %>">
-            <%= link_to t("payment.management_payment"), user_payments_index_path(current_user) %>
+            <%= link_to t("payment.management_payment"), user_payments_index_path(current_user), remote: true %>
           </li>
         <% end %>
         <li class="<%= check_current_url?(user_histories_index_path(@user)) %>">
-          <%= link_to t("user.management_history_document"), user_histories_index_path(@user) %>
+          <%= link_to t("user.management_history_document"), user_histories_index_path(@user), remote: true %>
         </li>
       </ul>
     </div>

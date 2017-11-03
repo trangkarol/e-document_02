@@ -8,6 +8,10 @@ class PaymentsController < ApplicationController
 
   def index
     list_payments
+    respond_to do |format|
+      format.html{head :no_content}
+      format.js
+    end
   end
 
   def new

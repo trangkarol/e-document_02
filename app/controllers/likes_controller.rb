@@ -1,15 +1,18 @@
 class LikesController < ApplicationController
-  before_action :logged_in_user, only: [:create]
-  before_action :load_document, only: [:create]
+  before_action :logged_in_user, only: [:create, :index]
+  before_action :load_document, only: [:create, :index]
   before_action :check_likes_exit, only: [:create]
 
   def create
-    if @like.any?
-      unlike
-    else
-      like
-    end
+    @like.any? ? unlike : like
     redirect_back(fallback_location: root_path)
+  end
+
+  def index
+    @list_user_liked = @document.likes.list_user
+      .paginate(page: params[:page], per_page: Settings.paginate_number)
+    html = render_to_string "likes/_list_member", layout: false
+    render json: {html: html}
   end
 
   private

@@ -5,6 +5,10 @@ class FriendsController < ApplicationController
 
   def index
     @list_friends = @user.list_friends
+    respond_to do |format|
+      format.html{head :no_content}
+      format.js
+    end
   end
 
   def create

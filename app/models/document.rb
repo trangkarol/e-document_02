@@ -9,8 +9,6 @@ class Document < ApplicationRecord
   # Comment
   has_many :comments, dependent: :destroy
   # Category of document
-  has_many :category_documents, dependent: :destroy
-  has_many :categories, through: :category_documents
   has_many :favorites, dependent: :destroy
 
   default_scope ->{order(created_at: :desc)}

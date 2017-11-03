@@ -1,10 +1,13 @@
-<%= render "users/header" %>
-<div class="container-stories">
-  <div class="container">
-    <%= render "users/left_bar" %>
-    <div class="col-md-9" id="div-show-user">
+<div class="col-lg-8 col-md-8">
+  <div class="widget-sidebar">
+    <h2 class="title-widget-sidebar">// <%= t "document.new" %> <%= @document.name %></h2>
+    <div class="row">
       <%= render "document_form" %>
     </div>
   </div>
 </div>
-
+<div class="col-lg-4 col-md-4">
+  <%= render "home_pages/list_friends_request" %>
+  <%= render "home_pages/list_friends_accpeting" %>
+  <%= render "home_pages/history" %>
+</div>

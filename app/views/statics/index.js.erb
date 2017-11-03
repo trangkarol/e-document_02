@@ -1,0 +1,5 @@
+<% if @list_statics.any? %>
+  $(".div-description").html("<%= escape_javascript(render 'statics/statics', object: @list_statics) %>");
+<% else %>
+  $(".div-description").html("<%= escape_javascript(render 'shared/empty') %>");
+<% end %>

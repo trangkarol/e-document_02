@@ -7,6 +7,7 @@
         <th class="text-center"><%= t "history.name_document" %></th>
         <th class="text-center"><%= t "history.size" %></th>
         <th class="text-center"><%= t "history.name_action" %></th>
+        <th class="text-center"><%= t "history.number" %></th>
         <th class="text-center"><%= t "history.date" %></th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
             <td><%= link_to history.document.name, user_document_path(@user.id, history.document) %></td>
             <td><%= history.document.file.size %></td>
             <td><%= history.name_action %></td>
+            <td><%= history.number %></td>
             <td><%= history.created_at.strftime("%Y/%m/%d") %></td>
           </tr>
         <% end %>

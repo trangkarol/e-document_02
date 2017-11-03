@@ -1,0 +1,5 @@
+<% if @list_histories.any? %>
+  $("#div-show-user").html("<%= escape_javascript(render 'histories/history', object: @list_histories) %>");
+<% else %>
+  $("#div-show-user").html("<%= escape_javascript(render 'shared/empty') %>");
+<% end %>
