@@ -15,7 +15,7 @@ $(document).ready(function () {
         },
         success:function(data) {
           if (data.status) {
-            $("#form_comment").prepend(data.html);
+            $("#list-comments").apend(data.html);
             $(".commet-form").prop("value", "");
           }
         }
@@ -24,7 +24,6 @@ $(document).ready(function () {
   });
 
   $(document).on("click", "#list-liked", function (e) {
-    // $("#squarespaceModal").show();
       $.ajax({
         type: 'GET',
         url: "<%= list_members_liked_path @document.id %>",
@@ -32,10 +31,6 @@ $(document).ready(function () {
         dataType: 'json',
         success:function(data) {
           $("#div-like-user").html(data.html)
-          // if (data.status) {
-          //   // $("#form_comment").prepend(data.html);
-          //   // $(".commet-form").prop("value", "");
-          // }
         }
     });
   });

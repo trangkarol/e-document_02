@@ -2,7 +2,10 @@
   <div class="widget-sidebar">
     <h2 class="title-widget-sidebar">// <%= t "document.new" %> <%= @document.name %></h2>
     <div class="row">
-      <%= render "document_form" %>
+      <%= form_for @document, url: user_documents_path, method: :post, class: "form-horizontal", multipart: true do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <%= render "document_form", f: f %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -39,6 +39,7 @@ en:
   hello: "Hello world"
   change: "Change"
   download: "Download Now!"
+  load_more: "Load more"
   home:
     title: "Home"
     placeholder_search: "Search..."

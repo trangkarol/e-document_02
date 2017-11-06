@@ -4,6 +4,7 @@ active: "active"
 user:
   minimum_coin: 0
   minimum_number_free: 0
+  minimum_number_upload: 0
   maxnimum_number_free: 3
   maxnimum_number_dowload: 10
   add_number_upload: 1

@@ -36,6 +36,7 @@
       <div class="row">
         <div class="input-field col s6 m6 l6">
           <p class="margin medium-small"><%= link_to t("user.btn_create"), new_user_registration_path %></p>
+          <p><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></p>
         </div>
         <div class="input-field col s6 m6 l6">
             <p class="margin right-align medium-small"><%= link_to t("user.forgot_password"), new_user_password_path %></p>

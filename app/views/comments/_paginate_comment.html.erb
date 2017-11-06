@@ -1,0 +1,3 @@
+<% if @comments.current_page < @comments.total_pages %>
+  <%= link_to t("load_more"), comment_path(document_id: @document.id, page: @comments.next_page), :remote => true %>
+<% end %>
