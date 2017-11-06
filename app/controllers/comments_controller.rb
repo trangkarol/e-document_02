@@ -4,7 +4,9 @@ class CommentsController < ApplicationController
 
   def index
     @comment = Comment.new
-    @list_comment = @document.comments.paginate(page: params[:page], per_page: Settings.paginate_number)
+    @comments = @document.comments
+      .order_comment
+      .paginate(page: params[:page], per_page: Settings.paginate_number)
     respond_to do |format|
       format.html{head :no_content}
       format.js
@@ -15,7 +17,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build comment_params
     if @comment.save
       @document.update_number_of_comment
-      html = render_to_string "comments/_comment", locals: {comment:@comment}, layout: false
+      html = render_to_string "comments/_comment", locals: {comment: @comment}, layout: false
       render json: {html: html, status: true }
     else
       render json: {status: true}

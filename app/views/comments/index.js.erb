@@ -1,4 +1,10 @@
-$("#comment").html("<%= escape_javascript(render 'comments/list_comments') %>");
+<% if @comments.current_page == 1 %>
+  $("#comment").html("<%= escape_javascript(render 'comments/list_comments') %>");
+<% else %>
+  $("#load-more-comments").empty();
+  $("#load-more-comments").html("<%= escape_javascript(render 'comments/paginate_comment') %>");
+  $("#list-comments").prepend("<%= escape_javascript(render @comments) %>");
+<% end %>
 $("#description").hide();
 $("#comment").show();
 $(".div-comment .pagination a").attr('data-remote', 'true');

@@ -1,6 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_document
+  before_action :load_document, only: [:new, :create, :update, :destroy, :download, :show]
   before_action :load_user_url, only: [:new, :create, :index, :destroy]
   before_action :list_friend_request, only: [:show, :new, :edit, :update]
   before_action :list_friends_accept, only: [:show, :new, :edit, :update]

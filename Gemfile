@@ -14,8 +14,10 @@ gem "bcrypt"
 gem "carrierwave", "~> 1.0"
 gem "config"
 gem "devise"
+gem "figaro"
 gem "file_validators"
 gem "font-awesome-rails"
+gem "omniauth-facebook"
 # I18n
 gem "i18n-js"
 # Mysql
@@ -32,6 +34,7 @@ gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "sprockets-rails", "2.3.3"
 gem "uglifier", ">= 1.3.0"
+gem "whenever", :require => false
 gem "will_paginate", "3.1.5"
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem "therubyracer", platforms: :ruby

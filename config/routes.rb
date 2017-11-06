@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   devise_scope :user do
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
   get "documents/statictis/:document_id", to:"documents#statictis", :as => "list_statictis"
   get "likes/index/:document_id", to:"likes#index", :as => "list_members_liked"
   match "documents/download/:id" => "documents#download",via: [:get, :post], :as => "download"
+  match "/auth/:provider/callback" => "sessions#create",via: [:get, :post], :as => "login_social"
+  # get '/auth/facebook' => 'sessions#new', :as => :signin
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :likes
   resources :users do

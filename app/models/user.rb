@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :omniauthable, :omniauth_providers => [:facebook]
   # List friends
   has_many :friends, dependent: :destroy
   has_many :request, class_name: Friend.name, foreign_key: "friend_id", dependent: :destroy
@@ -37,6 +38,26 @@ class User < ApplicationRecord
   }
   scope :not_current_user, ->(current_user_id){where("id != ?", current_user_id)}
   scope :search_user, ->(search){where("name like ? OR email like ?", "%#{search}%", "%#{search}%")}
+
+  class << self
+    def new_with_session(params, session)
+      super.tap do |user|
+        if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        end
+      end
+    end
+
+    def from_omniauth(auth)
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        user.name = auth.info.name   # assuming the user model has a name
+        user.avatar = auth.info.image # assuming the user model has an image
+      end
+    end
+  end
+
   def check_coin?
     total_coin > Settings.user.minimum_coin
   end
@@ -64,8 +85,13 @@ class User < ApplicationRecord
     if number_free?
       update_number_free
     elsif check_coin?
-      update_attribute :total_coin, self.total_coin += Settings.user.minus_total_coin
+      update_attribute :total_coin, self.total_coin -= Settings.user.minus_total_coin
     end
+  end
+
+  def update_last_moth
+    puts "Hello"
+    # attributes(number_free: Settings.user.maxnimum_number_free, number_upload: Settings.user.minimum_number_upload)
   end
 
   # When user download document that number_tree > 3

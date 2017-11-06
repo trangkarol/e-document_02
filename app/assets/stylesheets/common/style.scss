@@ -431,7 +431,7 @@ span {
       border: 0px;
       background: #16A085;
       width: 4%;
-      padding-right: 36%;
+      padding-right: 35%;
     }
   }
 }
@@ -658,7 +658,7 @@ td.image-history {
   width: 90%;
 }
 
-body{ 
+body{
   background: #fafafa;
 }
 
@@ -798,4 +798,8 @@ body .no-padding {
 div#div-like-user .list-like-user li {
   list-style: none;
   padding-bottom: 16px;
+}
+
+.no-member {
+  display: none;
 }

@@ -14,7 +14,7 @@
           <%= link_to t("user.profile"), @user %>
         </li>
         <li class="<%= check_current_url?(user_documents_path(@user)) %>">
-          <%= link_to t("document.list_document"), user_documents_path(@user), remote: true  %>
+          <%= link_to t("document.list_documents"), user_documents_path(@user), remote: true  %>
         </li>
         <li class="<%= check_current_url?(user_friends_path(@user)) %>">
           <%= link_to t("user.list_friends"),user_friends_path(@user), remote: true %>
