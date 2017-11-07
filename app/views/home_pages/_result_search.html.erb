@@ -1,4 +1,8 @@
-<% if !@result_documents.empty? %>
-	<%= render "list_documents", object: @result_documents %>
+<% if @result_documents.any? %>
+  <div id="result-documents">
+    <%= render "result_list_document", object: @result_documents %>
+  </div>
 <% end %>
-<%= render "result_user" %>
+<div id="result-users">
+  <%= render "result_user" %>
+</div>

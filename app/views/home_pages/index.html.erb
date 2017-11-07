@@ -1,5 +1,6 @@
 <div class="col-lg-8 col-md-8">
   <%= render "list_documents", object: @documents %>
+  <%= will_paginate @documents %>
 </div>
 <div class="col-lg-4 col-md-4">
 <%= render "list_friends_request" %>

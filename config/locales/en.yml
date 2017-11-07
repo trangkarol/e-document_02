@@ -39,6 +39,7 @@ en:
   hello: "Hello world"
   download: "Download Now!"
   empty: "No dat to show at here."
+  select_one: "Select one"
   home:
     title: "Home"
     placeholder_search: "Search..."
@@ -121,6 +122,7 @@ en:
     name: "category"
   comment:
     title: "Comment"
+    create_fail: "You can't comment"
   history:
     stt: "No."
     name_action: "Action"

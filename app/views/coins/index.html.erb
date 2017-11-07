@@ -3,8 +3,8 @@
   <div class="container">
     <%= render "users/left_bar" %>
     <div class="col-md-9" id="div-show-user">
-      <% if @list_friends.any? %>
-        <%= render "friend" %>
+      <% if @list_histories.any? %>
+        <%= render "history" %>
       <% else %>
         <%= render "shared/empty" %>
       <% end %>

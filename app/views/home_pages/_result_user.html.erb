@@ -14,4 +14,4 @@
       <% end %>
     <% end %>
 </div>
-<%= will_paginate @result_user %>
+<%= will_paginate(@result_user, params: {controller: :users, action: :search})  %>

@@ -1,0 +1,47 @@
+<%= form_for @coin, class: "form-horizontal", multipart: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :cost, t("coin.cost"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.collection_select :cost, list_category,
+        :id, :name ,{:include_blank => t("select_one")}, {class: "form-control"} %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :number_coins, t("coin.number_coins"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.number_field :number_coins, id: "number_coins" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :number, t("payment.number"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.number_field :number %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :total_money, t("payment.total_money"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.number_field :total_money %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :total_coins, t("payment.total_coins"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.number_field :total_coins %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit @button_text, class: "btn btn-primary col-md-offset-9" %>
+  </div>
+<% end %>
