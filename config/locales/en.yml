@@ -64,7 +64,6 @@ en:
     number_free: "Number free"
     total_coin: "Total icon"
     list_friends: "List friends"
-    buy_card: "Buy card"
     firends_request: "Request"
     please_log_in: "Plese login to system"
     list_friends_invition: "Accepting"
@@ -90,6 +89,8 @@ en:
     select_one: "Select one"
     upload_success: "Upload succsessfully!"
     messages_extension_error: "Only formats are allowed : %{name}"
+    download_fail: "You can't download this file."
+    download_success: "Download succsessfully."
   error:
     lbl_content: "List error"
   friend:
@@ -111,21 +112,30 @@ en:
     your_friend: "Friend"
     unfriend_success: "Unfriend succsessfully."
     unfriend_fail: "Unfriend is fail."
-    create_fail: "You don't add friend"
-    messages_extension_error: "Only formats are allowed : %{name}"
-    description: "Description"
     create_success: "You added friend succsessfully!"
     your_friend: "Friend"
     unfriend_success: "Unfriend succsessfully."
     unfriend_fail: "Unfriend is fail."
   category:
-    name: "category"
+    name: "Category"
   comment:
     title: "Comment"
     create_fail: "You can't comment"
+    placeholder_comment: "Comment something..."
   history:
     stt: "No."
     name_action: "Action"
     name_document: "Document"
     category: "Category"
     date: "Date"
+  coin:
+    buy_coin: "Buy coin"
+  payment:
+    management_payment: "Management payments"
+    stt: "No."
+    less_then_today: "Can't be in the past"
+    payment_not_found: "Payment not found"
+    buycoin_success: "You bought coin succsessfully"
+    delete_suceess: "Delete succsessfully."
+    delete_fail: "Delete fail."
+    comfirm_delete: "Do you want delete this coin?"

@@ -1,0 +1,54 @@
+<%= form_for @payment, url: user_payments_create_path(current_user), class: "form-horizontal", multipart: true do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="form-group">
+    <%= f.label :coin, t("coin.cost"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.collection_select :coin_id, list_cost, :id, :cost ,{include_blank: "Select one"}, {class: "form-control", id: "coin_id"} %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :number_coins, t("coin.number_coins"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= number_field_tag :number_coins, "", id: "number_coins", class: "form-control", disabled: "disabled" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :number, t("payment.number"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.number_field :number, class: "form-control", id: "number-payment" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :total_money, t("payment.total_money"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= number_field_tag :total_money, "", class: "form-control", id: "total_money", disabled: "disabled" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :total_coins, t("payment.total_coins"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= number_field_tag :total_coins, "", class: "form-control", id: "total_coins", disabled: "disabled" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :payment_date_estimate, t("payment.payment_date_estimate"), class: "col-md-4" %>
+    <div class="col-md-8">
+      <%= f.date_field :payment_date_estimate, class: "form-control" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit @button_text, class: "btn btn-primary col-md-offset-9" %>
+  </div>
+<% end %>

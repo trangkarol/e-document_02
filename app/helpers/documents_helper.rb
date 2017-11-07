@@ -7,4 +7,12 @@ module DocumentsHelper
     return if document.check_like_document current_user.id
     Settings.active
   end
+
+  def total_money coin_cost, number
+    coin_cost * number
+  end
+
+  def total_coins number_coins, number
+    number_coins * number
+  end
 end

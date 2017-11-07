@@ -1,0 +1,42 @@
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="text-center"><%= t "payment.stt" %></th>
+        <th class="text-center"><%= t "coin.cost" %></th>
+        <th class="text-center"><%= t "coin.number_coin" %></th>
+        <th class="text-center"><%= t "payment.number_buy" %></th>
+        <th class="text-center"><%= t "payment.total_money" %></th>
+        <th class="text-center"><%= t "payment.total_coin" %></th>
+        <th class="text-center"><%= t "payment.payment_date_estimate" %></th>
+        <th class="text-center"><%= t "payment.payment_date_present" %></th>
+        <th class="text-center"><%= t "payment.status" %></th>
+        <th class="text-center"></th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @payments.each_with_index do |payment, index| %>
+          <tr>
+            <td class="text-center"><%= @collection.offset + index + 1 %></td>
+            <td ><%= number_to_currency payment.coin.cost %></td>
+            <td><%= payment.coin.number_coins %></td>
+            <td><%= payment.number %></td>
+            <td><%= number_to_currency total_money(payment.coin.cost, payment.number) %></td>
+            <td class="text-right"><%= total_coins payment.coin.number_coins, payment.number %></td>
+            <td class="text-right"><%= payment.payment_date_estimate %></td>
+            <td class="text-right"><%= payment.payment_date_present %></td>
+            <td><%= check_status payment %></td>
+            <td>
+              <% if payment.status == Settings.payment.status_no_pay %>
+                <%= link_to t("cancel"), user_payments_destroy_path(current_user, payment),
+                  method: :delete,
+                  data: {confirm: t("payment.comfirm_delete")},
+                  class: "btn btn-danger" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+  <%= will_paginate @payments %>
+</div>

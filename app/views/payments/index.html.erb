@@ -1,0 +1,13 @@
+<%= render "users/header" %>
+<div class="container-stories">
+  <div class="container">
+    <%= render "users/left_bar" %>
+    <div class="col-md-9" id="div-show-user">
+      <% if @payments.any? %>
+        <%= render "payment" %>
+      <% else %>
+        <%= render "shared/empty" %>
+      <% end %>
+    </div>
+  </div>
+</div>

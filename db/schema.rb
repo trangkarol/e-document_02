@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029014156) do
+ActiveRecord::Schema.define(version: 20171031020416) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.string "description"
     t.integer "number_of_like", default: 0
     t.integer "number_of_comment", default: 0
+    t.string "content_type"
     t.index ["category_id"], name: "index_documents_on_category_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
@@ -99,6 +100,9 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.date "payment_date_estimate"
+    t.date "payment_date_present"
     t.index ["coin_id"], name: "index_payments_on_coin_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
