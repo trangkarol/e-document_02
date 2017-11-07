@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_many :favority_documents, through: :comments, source: :documents
   # Create document
   has_many :documents, dependent: :destroy
+  has_many :comments, dependent: :destroy
   mount_uploader :avatar, AvatarUploader
   # Validates
   validates :name, presence: true, length: {maximum: Settings.user.name_length}
@@ -28,10 +29,10 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.user.password_length}, allow_nil: true
-  scope :friends_request, lambda{|user_id, firend_ids|
+  scope :friends_request, lambda{|current_user_id, firend_ids|
     where("id NOT IN (?) AND id != ?", firend_ids, user_id)
   }
-  scope :not_current_user, ->(current_user_id){where("id != ?", current_user_id)}
+  scope :not_user, ->(user_id){where("id != ?", user_id)}
   scope :search_user, ->(search){where("name like ? OR email like ?", "%#{search}%", "%#{search}%")}
   def check_coin?
     total_coin > Settings.user.minimum_coin
@@ -56,6 +57,14 @@ class User < ApplicationRecord
     update_attribute :number_upload, number_upload + Settings.user.add_number_upload
   end
 
+  def update_number_download
+    if number_free?
+      update_number_free
+    elsif check_coin?
+      update_attribute :total_coin, self.total_coin += Settings.user.minus_total_coin
+    end
+  end
+
   # When user download document that number_tree > 3
   def update_number_free
     return unless number_free?
@@ -70,6 +79,12 @@ class User < ApplicationRecord
     update_attribute :total_coin, total_coin
   end
 
+  def update_buy_coin number_coins
+    self.total_coin += number_coins
+    update_attribute :total_coin, self.total_coin
+
+  end
+
   # Returns true if the given token matches the digest.
   def authenticated? attribute, token
     digest = send "#{attribute}_digest"
@@ -78,8 +93,8 @@ class User < ApplicationRecord
   end
 
   def list_friends
-    friend_ids = friends.joins(:friend).status_request
-    request_ids = request.joins(:user).status_request
+    friend_ids = friends.joins(:friend).where("friends.status = ?", Settings.friend.accept)
+    request_ids = request.joins(:user).where("friends.status = ?", Settings.friend.accept)
     friend_ids + request_ids
   end
 
