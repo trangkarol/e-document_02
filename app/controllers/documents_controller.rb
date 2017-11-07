@@ -4,6 +4,7 @@ class DocumentsController < ApplicationController
   before_action :load_user_url, only: [:new, :create, :index, :destroy]
   before_action :list_friend_request, only: [:show, :edit, :update]
   before_action :list_friends_accept, only: [:show, :edit, :update]
+  before_action :list_category, only: [:new, :update]
   def index
     @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
   end
@@ -62,5 +63,9 @@ class DocumentsController < ApplicationController
     return if history.save
     flash[:danger] = t "document.delete_fail"
     redirect_to user_documents_path(current_user)
+  end
+
+  def list_category
+    @categories = Category.all
   end
 end

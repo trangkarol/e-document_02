@@ -35,7 +35,7 @@
   <div class="form-group">
     <%= f.label :file, t("category.name"), class: "col-md-4" %>
     <div class="col-md-8">
-      <%= f.collection_select :category_id, list_category, :id, :name , {include_blank: t("document.select_one")}, {class: "form-control"} %>
+      <%= f.collection_select :category_id, @categories, :id, :name , {include_blank: t("document.select_one")}, {class: "form-control"} %>
     </div>
     <div class="clear"></div>
   </div>

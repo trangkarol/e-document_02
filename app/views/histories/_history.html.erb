@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive"> 
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -11,7 +11,7 @@
       </tr>
     </thead>
       <tbody>
-        <% object.each do |history| %>
+        <% @list_histories.each do |history| %>
           <tr>
             <td><%=  %></td>
             <td class="image-history"><%= image_tag history.document.image.url, class: "img-responsive" %></td>

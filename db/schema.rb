@@ -18,15 +18,6 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "category_documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "category_id"
-    t.bigint "document_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_category_documents_on_category_id"
-    t.index ["document_id"], name: "index_category_documents_on_document_id"
-  end
-
   create_table "coins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number_coins"
     t.float "cost", limit: 24
@@ -46,17 +37,19 @@ ActiveRecord::Schema.define(version: 20171029014156) do
 
   create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
-    t.integer "number_download"
+    t.integer "number_download", default: 0
     t.string "file"
     t.integer "size"
     t.boolean "status"
     t.bigint "user_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "description"
     t.integer "number_of_like", default: 0
     t.integer "number_of_comment", default: 0
+    t.index ["category_id"], name: "index_documents_on_category_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
@@ -127,10 +120,9 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "category_documents", "categories"
-  add_foreign_key "category_documents", "documents"
   add_foreign_key "comments", "documents"
   add_foreign_key "comments", "users"
+  add_foreign_key "documents", "categories"
   add_foreign_key "documents", "users"
   add_foreign_key "favorites", "documents"
   add_foreign_key "favorites", "users"

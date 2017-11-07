@@ -56,10 +56,9 @@ users.each do |user|
       file: Faker::File.file_name("public/upload", "dokkai1", "pdf"),
       description: Faker::Lorem.sentence(10),
       size: 1000,
-      status: random.rand(0..2)
+      status: random.rand(0..2),
+      category_id: random.rand(category_id_first..category_id_last)
     )
-    # category_documents
-    document.category_documents.create! category_id: random.rand(category_id_first..category_id_last)
     # history
     user.histories.create! document_id: document.id, name_action: "upload"
     user.update_number_upload
