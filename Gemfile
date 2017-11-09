@@ -64,6 +64,16 @@ group :development, :test do
   gem "capybara", "~> 2.13"
   gem "pry-rails"
   gem "selenium-webdriver"
+  gem "rspec-rails", "~> 3.6"
+end
+
+group :test do
+  gem "factory_girl_rails"
+  gem "rails-controller-testing"
+  gem "guard-rspec"
+  gem "launchy"
+  gem "shoulda-matchers", github: "thoughtbot/shoulda-matchers"
+  gem "database_cleaner"
 end
 
 group :development do

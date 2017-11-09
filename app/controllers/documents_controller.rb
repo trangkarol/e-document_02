@@ -1,10 +1,10 @@
 class DocumentsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_document, only: [:edit, :update, :destroy, :download, :show, :statictis]
-  before_action :load_user_url, only: [:new, :create, :index, :destroy]
+  before_action :load_user_url, only: [:create, :index, :destroy]
   before_action :list_friend_request, only: [:show, :new, :edit, :update]
   before_action :list_friends_accept, only: [:show, :new, :edit, :update]
-  before_action :list_document_history, expect: [:index, :download]
+  before_action :list_document_history, only: [:show, :new, :edit, :update]
   before_action :check_exit_history, only: [:download]
 
   def index
@@ -108,7 +108,7 @@ class DocumentsController < ApplicationController
   end
 
   def save_document
-    unless @document.save
+    if @document.save
       flash[:success] = t "document.upload_success"
       redirect_to edit_user_document_path(current_user.id, @document)
     end
