@@ -5,6 +5,7 @@ class LikesController < ApplicationController
 
   def create
     @like.empty? ? like : unlike
+    redirect_back fallback_location: root_path
   end
 
   private
@@ -24,13 +25,11 @@ class LikesController < ApplicationController
     if @document.likes << Like.new(user_id: current_user.id)
       @document.update_number_of_like Settings.like.flag_like
     end
-    redirect_to user_document_path(@document.owner.id, @document)
   end
 
   def unlike
-    unless @like.destroy
+    unless @like.first.destroy
       @document.update_number_of_like Settings.like.flag_unlike
     end
-    redirect_to user_document_path(@document.owner.id, @document)
   end
 end

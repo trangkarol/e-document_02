@@ -19,7 +19,7 @@ class FriendsController < ApplicationController
 
   def update
     @friend.accpet_request
-    redirect_to root_url
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -28,7 +28,7 @@ class FriendsController < ApplicationController
     else
       flash[:danger] = t "friend.unfriend_fail"
     end
-    redirect_to user_friends_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   private

@@ -5,13 +5,14 @@ class DocumentsController < ApplicationController
   before_action :list_friend_request, only: [:show, :edit, :update]
   before_action :list_friends_accept, only: [:show, :edit, :update]
   before_action :list_category, only: [:new, :update]
+  before_action :list_document_history, only: [:show, :edit, :update]
+
   def index
     @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
   end
 
   def show
-    list_friend_request
-    list_friends_accept
+    session_history @document
   end
 
   def edit; end
@@ -25,11 +26,20 @@ class DocumentsController < ApplicationController
     if @document.save
       current_user.update_number_upload
       current_user.update_total_coins Settings.user.minus_total_coin
+      # add to history
       create_history Settings.history.action_upload
-      flash[:success] = t "messages.register_success"
+      flash[:success] = t "document.upload_success"
       redirect_to user_documents_path(current_user)
     else
       render :new
+    end
+  end
+
+  def search
+    search_document
+    respond_to do |format|
+      format.html{}
+      format.js
     end
   end
 
@@ -44,6 +54,21 @@ class DocumentsController < ApplicationController
     redirect_to user_documents_path(current_user)
   end
 
+  def download
+    if check_download_user?
+      current_user.update_number_download
+      @document.update_number_download
+      create_history Settings.history.action_download
+      send_file @document.file.path,
+        filename: @document.file.file.filename
+
+      flash[:success] = t "document.download_success"
+    else
+      flash[:danger] = t "document.download_fail"
+      redirect_to user_document_path(@document.owner.id, @document)
+    end
+  end
+
   private
 
   def document_params
@@ -51,6 +76,7 @@ class DocumentsController < ApplicationController
   end
 
   def load_document
+    params[:id] ||= params[:format]
     @document = Document.includes(:owner, :likes, :category).find_by_id params[:id]
     return if @document
     flash[:danger] = t "document.document_not_found"

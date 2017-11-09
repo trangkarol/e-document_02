@@ -15,6 +15,7 @@ class Document < ApplicationRecord
 
   default_scope ->{order(created_at: :desc)}
   scope :search_document, ->(search){where("name like ? OR description like ?", "%#{search}%", "%#{search}%")}
+  scope :list_history, ->(document_ids){where("id IN (?)", document_ids)}
 
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader
@@ -27,18 +28,31 @@ class Document < ApplicationRecord
     length: {minimum: Settings.document.description_length}
   validates :file, presence: true
   validates :category_id, presence: true
+  before_save :update_asset_attributes
 
   def update_number_of_like flag
-    number_of_like = self.number_of_like
-    if flag == Settings.like.flag_like
-      number_of_like += 1
-    else
-      number_of_like -= 1
-    end
-    update_attribute :number_of_like, number_of_like
+    flag == Settings.like.flag_like ? self.number_of_like += 1 : self.number_of_like -= 1
+    update_attribute :number_of_like, self.number_of_like
   end
 
   def check_like_document current_user_id
     likes.check_like(current_user_id).empty?
+  end
+
+  def update_number_download
+    self.number_download += 1
+    update_attribute :number_download, self.number_download
+  end
+
+  def update_number_of_comment
+    update_attribute :number_of_comment, self.number_of_comment += 1
+  end
+
+  private
+
+  def update_asset_attributes
+    if file.present? && file_changed?
+      self.content_type = file.file.content_type
+    end
   end
 end
