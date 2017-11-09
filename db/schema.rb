@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029014156) do
+ActiveRecord::Schema.define(version: 20171101012855) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.string "description"
     t.integer "number_of_like", default: 0
     t.integer "number_of_comment", default: 0
+    t.string "content_type"
     t.index ["category_id"], name: "index_documents_on_category_id"
     t.index ["user_id"], name: "index_documents_on_user_id"
   end
@@ -99,6 +100,9 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.date "payment_date_estimate"
+    t.date "payment_date_present"
     t.index ["coin_id"], name: "index_payments_on_coin_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
@@ -109,7 +113,6 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.datetime "birthday"
     t.string "address"
     t.string "phone"
-    t.string "password_digest"
     t.boolean "status", default: false
     t.string "avatar"
     t.boolean "role", default: true
@@ -118,6 +121,17 @@ ActiveRecord::Schema.define(version: 20171029014156) do
     t.integer "number_upload", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "documents"

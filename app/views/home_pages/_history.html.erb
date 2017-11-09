@@ -8,13 +8,13 @@
             <div class="post-img">
               <%= image_tag document.image.url, class: "img-responsive"%>
             </div>
-            <p class="title-name"><%= link_to document.name, user_document_path(document.owner.id, document) %></p>
-            <p class="email-user"><%= document.category.name %></p>
-            <p class="email-user"><%= document.owner.name %></p>
+              <p class="title-name"><%= link_to document.name, user_document_path(document.owner.id, document) %></p>
+              <p class="email-user"><%= document.category.name %></p>
+              <p class="email-user"><%= document.owner.name %></p>
           </li>
           <hr>
         <% end %>
       <% end %>
-    </ul>
+      </ul>
   </div>
 </div>

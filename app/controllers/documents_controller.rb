@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :logged_in_user, except: [:index]
+  before_action :logged_in_user, except: :index
   before_action :load_document, only: [:show, :destroy, :edit]
   before_action :load_user_url, only: [:new, :create, :index, :destroy]
   before_action :list_friend_request, only: [:show, :edit, :update]

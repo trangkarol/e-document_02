@@ -1,0 +1,2 @@
+$("#result-users").html("<%= escape_javascript(render 'home_pages/result_user', object: @result_users) %>");
+$('#result-users .pagination a').attr('data-remote', 'true');

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   # List friends
   has_many :friends, dependent: :destroy
   has_many :request, class_name: Friend.name, foreign_key: "friend_id", dependent: :destroy
@@ -27,7 +30,7 @@ class User < ApplicationRecord
     length: {maximum: Settings.user.email_length},
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: {case_sensitive: false}
-  has_secure_password
+  # has_secure_password
   validates :password, presence: true, length: {minimum: Settings.user.password_length}, allow_nil: true
   scope :friends_request, lambda{|current_user_id, firend_ids|
     where("id NOT IN (?) AND id != ?", firend_ids, user_id)
@@ -86,8 +89,8 @@ class User < ApplicationRecord
   end
 
   # Returns true if the given token matches the digest.
-  def authenticated? attribute, token
-    digest = send "#{attribute}_digest"
+  def authenticated?(attribute, token)
+    digest = send "encrypted_password"
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password? token
   end

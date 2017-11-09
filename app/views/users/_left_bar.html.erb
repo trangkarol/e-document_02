@@ -20,11 +20,8 @@
           <%= link_to t("user.list_friends"),user_friends_path(@user) %>
         </li>
         <% if current_user? @user %>
-          <li class="<%= check_current_url?(new_user_document_path(@user)) %>">
-            <%= link_to t("document.up_load_file"), new_user_document_path(current_user), id: "up_load_file" %>
-          </li>
-          <li class="<%= check_current_url?(user_documents_path(@user)) %>">
-            <%= link_to t("document.buy_card"), "#" %>
+          <li class="<%= check_current_url?(user_payments_index_path(current_user)) %>">
+            <%= link_to t("payment.management_payment"), user_payments_index_path(current_user) %>
           </li>
         <% end %>
         <li class="<%= check_current_url?(user_histories_index_path(@user)) %>">

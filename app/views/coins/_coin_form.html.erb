@@ -4,7 +4,7 @@
     <%= f.label :cost, t("coin.cost"), class: "col-md-4" %>
     <div class="col-md-8">
       <%= f.collection_select :cost, list_category,
-        :id, :name ,{:include_blank => t("select_one")}, {class: "form-control"} %>
+        :id, :name ,{include_blank: t("select_one")}, {class: "form-control"} %>
     </div>
     <div class="clear"></div>
   </div>

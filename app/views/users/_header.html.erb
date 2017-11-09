@@ -3,10 +3,12 @@
     <%= image_tag "backgroud.jpg", class: "fb-image-lg", align: "left" %>
     <%= image_tag @user.avatar.url, class: "fb-image-profile thumbnail", align: "left" %>
     <div class="fb-profile-text">
+    <% if current_user?(@user) %>
       <h1><%= @user.name %></h1>
       <p><%= @user.email %></p>
-      <button type="button" class="btn btn-info btn-circle"><i class="fa fa-check"></i></button>
-      <button type="button" class="btn btn-warning btn-circle"><i class="fa fa-times"></i></button>
+    <% else %>
+      <%= render "shared/check_friend", member: @user %>
+    <% end %>
     </div>
   </div>
 </div>

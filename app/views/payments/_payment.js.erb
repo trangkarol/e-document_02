@@ -1,0 +1,27 @@
+$(document).ready(function () {
+  $(document).on("change", "#coin_id", function () {
+    var coin_id = $(this).val();
+    $.ajax({
+      type: 'POST',
+      url: "<%= coins_number_coins_path %>",
+      dataType: 'json',
+      data: {
+        coin_id: coin_id
+      },
+      success:function(data) {
+        if (data.status) {
+          $("#number_coins").prop("value", data.coin.number_coins)
+        }
+      }
+    });
+  });
+
+  $(document).on("change", "#number-payment", function () {
+    var coin = $("#coin_id option:selected").text().trim();
+    console.log("coin_id", coin);
+    var number_coins = $("#number_coins").val();
+    var number_payment = $(this).val();
+    $("#total_money").prop("value", parseInt(coin) * parseInt(number_coins));
+    $("#total_coins").prop("value", parseInt(number_coins) * parseInt(number_payment));
+  });
+});
