@@ -1,0 +1,14 @@
+<div class="col-md-12" id="form_comment">
+  <div class="widget-area no-padding blank">
+    <div class="status-upload">
+      <% form_for @comment, url: comment_create_path, remote: true do |f| %>
+        <% f.hidden_field :url_comment, comment_create_path, class: "url_comment" %>
+        <% f.hidden_field :document_id, @document.id, class: "document_id" %>
+        <% f.text_area :content,
+          class: "form-control commet-form",
+          placeholder: "#{t('comment.placeholder_comment')}"
+        %>
+      <% end %>
+    </div>
+  </div>
+</div>

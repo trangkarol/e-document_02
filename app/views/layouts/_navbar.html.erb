@@ -11,6 +11,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><%= link_to t("home.title"), root_path, class: "smooth-scroll" %></li>
+        <% if logged_in? %>
+          <li><%= link_to t("coin.buy_coin"), user_payments_new_path(current_user) %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <%= render "layouts/form_search" %>

@@ -25,7 +25,7 @@
         <!-- Botones de compra -->
         <div class="section section-download">
           <% if !check_owner?(@document.owner.id) %>
-            <%= link_to t("download"), @document.file.url, class: "btn-success btn" %>
+            <%= link_to t("download"), download_path(@document.id), method: :post, class: "btn-success btn" %>
           <% else %>
             <%= link_to t("document.edit"), edit_user_document_path(current_user.id, @document), class: "button-more-success btn" %>
             <%= link_to t("document.delete"),
@@ -41,11 +41,13 @@
 
       <div class="col-xs-12">
         <ul class="menu-items">
-          <li class="active" id="description"><%= t "document.description" %></li>
-          <li id="comment"><%= t "comment.title" %></li>
+          <li class="active" id="name-description"><%= t "document.description" %></li>
+          <li><%= link_to t("comment.title"), comment_path(@document.id), remote: true %></li>
         </ul>
         <div id="description" class="div-description">
           <p><%= @document.description %></p>
+        </div>
+        <div id="comment" class="div-description">
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <%= form_tag likes_path, method: :post do %>
   <%= hidden_field_tag :document_id, object.id %>
-  <%= button_tag "<i class='fa fa-heart' aria-hidden='true'></i>".html_safe, type: :submit,
-    class: "like-document #{check_like(object, current_user)}" %>
+  <%= button_tag "<i class='fa fa-heart' aria-hidden='true'></i>".html_safe,
+    type: :submit, class: "like-document #{check_like(object, current_user)}" %>
   <span><%= object.number_of_like %></span>
 <% end %>

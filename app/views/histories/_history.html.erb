@@ -1,4 +1,4 @@
-<div class="table-responsive"> 
+<div class="table-responsive">
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -11,17 +11,17 @@
       </tr>
     </thead>
       <tbody>
-        <% @list_histories.each do |history| %>
+        <% @list_histories.each_with_index do |history, index| %>
           <tr>
-            <td><%=  %></td>
+            <td class="text-center"><%= index + 1 %></td>
             <td class="image-history"><%= image_tag history.document.image.url, class: "img-responsive" %></td>
             <td><%= link_to history.document.name, user_document_path(@user.id, history.document) %></td>
             <td><%= history.document.file.size %></td>
             <td><%= history.name_action %></td>
-            <td><%= history.created_at %></td>
+            <td><%= history.created_at.strftime("%Y/%m/%d") %></td>
           </tr>
         <% end %>
       </tbody>
   </table>
-  <%= will_paginate @object %>
+  <%= will_paginate @list_histories %>
 </div>
