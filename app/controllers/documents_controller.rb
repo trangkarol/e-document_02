@@ -6,7 +6,6 @@ class DocumentsController < ApplicationController
   before_action :list_friends_accept, only: [:show, :edit, :update]
   before_action :list_category, only: [:new, :update]
   before_action :list_document_history, only: [:show, :edit, :update]
-
   def index
     @list_document = @user.documents.paginate(page: params[:page], per_page: Settings.paginate_number)
   end
